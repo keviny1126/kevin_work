@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Bağlantı kesiliyor:</string>
+    <string name="bluetooth_connecting">Bağlanıyor</string>
+    <string name="bluetooth_no_search_device">Bağlanmak istediğiniz Bluetooth tespit edilemedi, yakındamı ya da normal olarak çalışıyor mu?</string>
+    <string name="bluetooth_connected">Bağlandı</string>
+    <string name="bluetooth_no_connected">Bağlanmadı</string>
+    <string name="bluetooth_connect_fail">Bağlantı başarısız</string>
+    <string name="bluetooth_connect_lost">Bağlantı koptu</string>
+    <string name="bluetooth_connect_success">Bluetooth bağlandı</string>
+    <string name="bluetooth_reconnect">Bluetooth bağlanma başarısız, yeniden bağlanıyor...</string>
+    <string name="bluetooth_scan_start">Tara</string>
+    <string name="bluetooth_scaning">Taranıyor...</string>
+    <string name="bluetooth_scan_end">Tarama sonu</string>
+</resources>

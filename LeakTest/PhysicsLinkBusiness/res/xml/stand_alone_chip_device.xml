@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>	
+	<!-- DBSCAR [VID:0x0525/1317 PID:0xA4A7/42151] -->
+	<usb-device vendor-id="1317" product-id="42151" />
+	<!-- DBSCAR [VID:0x0525/1317 PID:0xa4a6/42150] -->
+	<usb-device vendor-id="1317" product-id="42150" />
+	<!-- DBSCAR [VID:0x1D6B/7531 PID:0x0104/260] -->
+	<usb-device vendor-id="7531" product-id="260" />
+	<!-- DBSCAR [VID:0x1D6B/7531 PID:0x0106/262] -->
+	<usb-device vendor-id="7531" product-id="262" />
+	<!-- DBSCAR [VID:0x03EB/1003 PID:0x2404/9220] -->
+	<!--<usb-device vendor-id="1003" product-id="9220" /> -->
+	<!-- DBSCAR [VID:0x0403/1027 PID:0x6001/24577] -->
+	<usb-device vendor-id="1027" product-id="24577"/>
+</resources>

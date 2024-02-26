@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.newchip.tool.leaktest.ui.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_LowModeFragment"
+            app:destination="@id/LowModeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_highModeFragment"
+            app:destination="@id/highModeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dataFragmentNew"
+            app:destination="@id/dataFragmentNew" />
+    </fragment>
+    <fragment
+        android:id="@+id/LowModeFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.LowModeFragment"
+        android:label="LowModeFragment"
+        tools:layout="@layout/fragment_low_voltage_mode">
+        <action
+            android:id="@+id/action_LowModeFragment_to_LowModeConfigFragment"
+            app:destination="@id/LowModeConfigFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataFragment"
+        android:name="com.newchip.tool.leaktest.ui.data.DataFragment"
+        android:label="DataFragment"
+        tools:layout="@layout/fragment_data">
+        <action
+            android:id="@+id/action_dataFragment_to_dataDetailFragment"
+            app:destination="@id/dataDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.newchip.tool.leaktest.ui.setting.fragment.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/LowModeConfigFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.LowModeConfigFragment"
+        android:label="LowModeConfigFragment"
+        tools:layout="@layout/fragment_config" />
+    <fragment
+        android:id="@+id/dataDetailFragment"
+        android:name="com.newchip.tool.leaktest.ui.data.DataDetailFragment"
+        android:label="DataDetailFragment"
+        tools:layout="@layout/fragment_data_detail">
+        <argument
+            android:name="testData"
+            app:argType="com.power.baseproject.db.entity.TestData" />
+    </fragment>
+    <fragment
+        android:id="@+id/highModeFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.HighModeFragment"
+        android:label="HighModeFragment">
+        <action
+            android:id="@+id/action_highModeFragment_to_highModeConfigFragment"
+            app:destination="@id/highModeConfigFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/highModeConfigFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.HighModeConfigFragment"
+        android:label="HighModeConfigFragment" />
+    <fragment
+        android:id="@+id/dataFragmentNew"
+        android:name="com.newchip.tool.leaktest.ui.data.DataFragmentNew"
+        android:label="DataFragmentNew"
+        tools:layout="@layout/fragment_data_new" />
+</navigation>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Se deconecteaza:</string>
+    <string name="bluetooth_connecting">Se conecteaza</string>
+    <string name="bluetooth_no_search_device">Dispozitivul bluetooth pe care vreti sa il conectati nu este detectat, este in apropiere sau alimentat?</string>
+    <string name="bluetooth_connected">Conectat</string>
+    <string name="bluetooth_no_connected">Nu este conectat</string>
+    <string name="bluetooth_connect_fail">Conexiune esuata</string>
+    <string name="bluetooth_connect_lost">Conexiune pierduta</string>
+    <string name="bluetooth_connect_success">Bluetooth conectat</string>
+    <string name="bluetooth_reconnect">Esuare la conexiunea bluetooth, se conecteaza din nou...</string>
+    <string name="bluetooth_scan_start">Scanare</string>
+    <string name="bluetooth_scaning">Se scaneaza...</string>
+    <string name="bluetooth_scan_end">Scanare terminata</string>
+</resources>

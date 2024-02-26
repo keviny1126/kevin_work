@@ -1,0 +1,5 @@
+package com.cnlaunch.physics.usb;
+
+enum FTDICHIPTYPE {
+    FT232RL, FT2232C, FT232H, FT2232D, FT2232HL, FT4232HL, FT230X, CDC, NONE;
+}

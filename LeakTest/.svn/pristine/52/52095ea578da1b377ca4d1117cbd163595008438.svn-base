@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Искључивање:</string>
+    <string name="bluetooth_connecting">Прикључивање</string>
+    <string name="bluetooth_no_search_device">Bluetooth који желите да повежете није пронађен. Да ли је у близини и нормално се покреће?</string>
+    <string name="bluetooth_connected">Повезано</string>
+    <string name="bluetooth_no_connected">Није повезано</string>
+    <string name="bluetooth_connect_fail">Неуспешно повезивање</string>
+    <string name="bluetooth_connect_lost">Квар или пауза у повезивању</string>
+    <string name="bluetooth_connect_success">Bluetooth повезан</string>
+    <string name="bluetooth_reconnect">Bluetooth повезивање није успело, поновно повезивање...</string>
+    <string name="bluetooth_scan_start">Скенирање</string>
+    <string name="bluetooth_scaning">Скенирање...</string>
+    <string name="bluetooth_scan_end">Крај скенирања</string>
+</resources>

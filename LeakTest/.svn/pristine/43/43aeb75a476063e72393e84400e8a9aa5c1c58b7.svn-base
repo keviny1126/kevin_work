@@ -1,0 +1,4 @@
+rootProject.name = "LeakTestApp"
+include ':app'
+include ':BaseProject'
+include ':PhysicsLinkBusiness'

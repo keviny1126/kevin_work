@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Katkaistaan yhteys:</string>
+    <string name="bluetooth_connecting">Yhdistetään</string>
+    <string name="bluetooth_no_search_device">Ei löydy liitettävää bluetooth laitetta. Tarkista onko se lähistöllä tai kytkettyä päälle?</string>
+    <string name="bluetooth_connected">Yhdistetty</string>
+    <string name="bluetooth_no_connected">Ei yhdistetty</string>
+    <string name="bluetooth_connect_fail">Liittäminen epäonnistui</string>
+    <string name="bluetooth_connect_lost">Yhteyden katko</string>
+    <string name="bluetooth_connect_success">Bluetooth liitetty</string>
+    <string name="bluetooth_reconnect">Bluetooth liitäntä epäonnistui, uudelleenliitäntä...</string>
+    <string name="bluetooth_scan_start">Selaa</string>
+    <string name="bluetooth_scaning">Selataan ...</string>
+    <string name="bluetooth_scan_end">Selauksen loppu</string>
+</resources>

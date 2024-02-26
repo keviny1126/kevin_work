@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="swipe_target" type="id" />
+    <item name="swipe_refresh_header" type="id" />
+    <item name="swipe_load_more_footer" type="id" />
+
+    <item type="id" name="toolbar" />
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+
+    <item name="view_data" type="id"/>
+    <item name="tag_mediaitem_state_cache" type="id"/>
+
+    <item name="siv_0_" type="id"/>
+    <item name="siv_1_" type="id"/>
+    <item name="siv_2_" type="id"/>
+    <item name="siv_3_" type="id"/>
+    <item name="siv_4_" type="id"/>
+    <item name="siv_5_" type="id"/>
+    <item name="siv_6_" type="id"/>
+    <item name="siv_7_" type="id"/>
+    <item name="siv_8_" type="id"/>
+    <item name="detail_videoplayer" type="id"/>
+    <item name="tv_top_hint" type="id" />
+
+    <item type="id" name="gridview" />
+    <item type="id" name="webview" />
+    <item type="id" name="scrollview" />
+</resources>

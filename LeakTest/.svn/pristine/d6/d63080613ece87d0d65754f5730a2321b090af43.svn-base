@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Разъединение:</string>
+    <string name="bluetooth_connecting">Соединение</string>
+    <string name="bluetooth_no_search_device">Устройство Bluetooth не обнаружено, находится поблизости или включить питание нормально?</string>
+    <string name="bluetooth_connected">Подключен</string>
+    <string name="bluetooth_no_connected">Не подключен</string>
+    <string name="bluetooth_connect_fail">Не удалось соединить</string>
+    <string name="bluetooth_connect_lost">Соединение прервано</string>
+    <string name="bluetooth_connect_success">Bluetooth подключен</string>
+    <string name="bluetooth_reconnect">Не удалось подключить Bluetooth, подключите снова...</string>
+    <string name="bluetooth_scan_start">Сканирование</string>
+    <string name="bluetooth_scaning">Идет сканирование...</string>
+    <string name="bluetooth_scan_end">Завершение сканирования</string>
+    <string name="msg_wifi_state_no_active">1. Пожалуйста, проверьте, подключен ли разъем, и инициализация завершена (после подключения постоянно мигает индикатор, затем мигание прекращается, слышен звук, означает, что инициализация завершена).\n
+                                            2. Если вы хотите подтвердить, что инициализация завершена, попробуйте еще раз. \n
+                                            3. Если проблема все еще существует, перезапустите устройство или отключите разъем и подключите его снова. \n</string>
+
+</resources>

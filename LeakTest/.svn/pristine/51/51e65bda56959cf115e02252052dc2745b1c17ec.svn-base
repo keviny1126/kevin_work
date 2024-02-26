@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">断开已连接到的：</string>
+    <string name="bluetooth_connecting">正在连接</string>
+    <string name="bluetooth_no_search_device">未检测到您要连接的蓝牙设备，该设备是否在附近或通电正常？</string>
+    <string name="bluetooth_connected">已连接　</string>
+    <string name="bluetooth_no_connected">未连接　</string>
+    <string name="bluetooth_connect_fail">连接失败</string>
+    <string name="bluetooth_connect_lost">连接丢失</string>
+    <string name="bluetooth_connect_success">蓝牙设备连接成功</string>
+    <string name="bluetooth_reconnect">蓝牙设备连接失败，正在重新连接...</string>
+    <string name="bluetooth_scan_start">开始扫描</string>
+    <string name="bluetooth_scaning">正在扫描...</string>
+    <string name="bluetooth_scan_end">扫描结束</string>
+    
+    <string name="msg_usb_connect_state_success">USB 连接成功</string>
+    <string name="msg_usb_disconnect_state_success">USB 已经断开</string>
+    <string name="msg_usb_connect_state_fail">USB 连接失败</string>
+    <string name="msg_usb_disconnect_state_fail">USB 断开失败</string>
+    <string name="msg_usb_state_no_device_detected">USB 未检测到任何接头</string>
+    <string name="msg_usb_state_no_permission">USB 无访问权限</string>
+    <string name="msg_usb_state_no_exclusive_access">USB 无独立访问权限(可能被其他程序占用)</string>
+    <string name="msg_usb_state_device_not_support">USB 不支持</string>
+    <string name="msg_system_error_tips">抱歉，应用初始化出现问题，请按照步骤选择下列建议操作：\n\n
+    1、如果使用有线诊断，请拔掉有线，停留5秒后再插上有线。然后进入诊断。\n\n
+    2、如果问题还不能排除，检查是否有其他的元征诊断软件在运行，如果存在请停止运行其他的元征诊断软件。\n\n
+     3、如果问题还不能排除，请重启设备。\n\n</string>
+    <string name="msg_wifi_connect_state_fail">WiFi 网络连接失败。请确定是否已经配置好WiFi 网络。如果确认问题已经排除，请重试WiFi 网络连接</string>
+    <string name="msg_wifi_connect_state_fail_for_wifi_priority">1. 请检查接头是否通电且初始化完成（接头通电后通讯指示灯持续闪烁，闪烁停止并伴有“嘀嘀”声表示接头初始化完成）。 \n
+                                           2. 如确认接头初始化完成，请重试。\n
+                                           3. 如果问题还持续存在，请确定系统WiFi设置中是否已经配置好相同的WiFi 热点。如已经存在该WiFi 热点配置需要删除该配置，应用才有权限实现自动连接。该操作只需操作一次。\n
+                                           4. 如果确认问题已经排除，请重试WiFi 网络连接。 \n</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">获取接头WiFi 网络IP地址失败。可能原因如下:\n
+    1、公共WiFi 网络不支持广播。\n
+    2、诊断接头WiFi设置信息可能有误。\n
+    如果确认问题已经排除，请重试WiFi 网络连接\n</string>
+    <string name="msg_wifi_connect_state_success">WiFi 网络连接成功</string>
+    <string name="msg_wifi_state_no_active">1. 请检查接头是否通电且初始化完成（接头通电后通讯指示灯持续闪烁，闪烁停止并伴有“嘀嘀”声表示接头初始化完成）。 \n
+                                           2. 如确认接头初始化完成，请重试。\n
+                                           3. 如问题仍然出现，请重新启动设备或拔插接头后再试。\n</string>
+    <string name="msg_serialport_connect_state_fail">打开串口失败</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">诊断接头没有通电，请检查车辆OBD接口与设备是否已经连接。</string>
+    <string name="msg_serialport_connect_state_success">打开串口成功</string>
+ <string name="msg_simulator_connect_state_success">打开虚拟设备成功</string>
+ <string name="msg_simulator_connect_state_fail">打开虚拟设备失败</string>
+    <string name="msg_wifi_not_set_service_ip_port">服务器IP地址或端口未设置，请先设置服务器IP地址和端口</string>
+    <string name="msg_system_dpulms_error_tips">蓝牙连接软件版本过低。请到\"升级中心\"升级\"诊断接头连接管理服务\"。\n</string>
+
+    
+  <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+     <string name="connected_via_wfa" msgid="3805736726317410714">"已连接（通过 WLAN 助手）"</string>
+     <!-- Summary for the remembered network but currently not in range. -->
+     <string name="wifi_not_in_range" msgid="1136191511238508967">"不在范围内"</string>
+     <!-- Summary for the remembered network. -->
+     <string name="wifi_remembered" msgid="4955746899347821096">"已保存"</string>
+     <string name="wifi_security_none" msgid="7985461072596594400">"无"</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">获取接头以太网卡设备IP地址失败。</string>
+    <string name="msg_ethernet_connect_state_fail">以太网网络连接失败。</string>
+    <string name="msg_ethernet_connect_state_success">以太网网络连接成功。</string>
+
+    <string name="msg_dhcp_start_service_status_success">DHCP服务启动成功</string>
+    <string name="msg_dhcp_start_service_status_fail">DHCP服务启动失败</string>
+    <string name="msg_dhcp_stop_service_status_success">DHCP服务停止成功</string>
+    <string name="msg_dhcp_stop_service_status_fail">DHCP服务停止失败</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">IP分配失败</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">IP分配成功，IP地址为%s</string>
+    <string name="msg_dhcp_cable_status_linkup">网线已经插入</string>
+    <string name="msg_dhcp_cable_status_down">网线已经拔出</string>
+</resources>

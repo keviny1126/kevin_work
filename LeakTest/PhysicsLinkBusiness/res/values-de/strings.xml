@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Trennung:</string>
+    <string name="bluetooth_connecting">Verbindung läuft</string>
+    <string name="bluetooth_no_search_device">Bluetooth, mit dem Sie verbinden möchten, wird nicht erkannt, ist es in der Nähe oder normal eingeschaltet?</string>
+    <string name="bluetooth_connected">Verbunden</string>
+    <string name="bluetooth_no_connected">Nicht verbunden</string>
+    <string name="bluetooth_connect_fail">Verbindung ausgefallen</string>
+    <string name="bluetooth_connect_lost">Verbindung unterbrochen</string>
+    <string name="bluetooth_connect_success">Bluetooth verbunden</string>
+    <string name="bluetooth_reconnect">Verbindung mit Bluetooth ausgefallen, Verbindung läuft wieder...</string>
+    <string name="bluetooth_scan_start">Scannen fängt an</string>
+    <string name="bluetooth_scaning">Scannen läuft...</string>
+    <string name="bluetooth_scan_end">Scannen endet</string>
+
+    <string name="msg_usb_connect_state_success">USB-Verbindung erfolgreich</string>
+    <string name="msg_usb_disconnect_state_success">USB getrennt</string>
+    <string name="msg_usb_connect_state_fail">USB-Verbindung fehlgeschlagen</string>
+    <string name="msg_usb_disconnect_state_fail">USB-Trennung fehlgeschlagen</string>
+    <string name="msg_usb_state_no_device_detected">Kein USB-Gerät gefunden</string>
+    <string name="msg_usb_state_no_permission">USB-Gerät hat keine Berechtigungen</string>
+    <string name="msg_usb_state_no_exclusive_access">Keine Berechtigung für exklusives USB-Gerät (Vielleicht mit einem anderen Programm belegt)</string>
+    <string name="msg_usb_state_device_not_support">USB nicht unterstützt</string>
+    <string name="msg_system_error_tips">Entschuldigung, bei Anwendungsinitialisierung tritt ein Fehler auf, versuchen Sie bitte die folgenden Vorschläge: \n\n
+    1. Wenn Sie eine USB-Diagnose verwenden, ziehen Sie bitte das USB-Kabel ab und stecken Sie das USB-Kabel nach 5 Sekunden erneut ein. Führen Sie dann die Diagnose durch. \n\n
+    2. Wenn das Problem immer noch nicht gelöst werden kann, prüfen Sie, ob andere LAUNCH-Diagnosesoftware ausgeführt wird. Falls dies nicht der Fall ist, beenden Sie die Ausführung der anderen LAUNCH-Diagnosesoftware.\n\n
+    3. Wenn das Problem immer noch nicht gelöst werden kann, starten Sie das Gerät bitte erneut. \n\n</string>
+    <string name="msg_wifi_connect_state_fail">WiFi-Netzwerkverbindung fehlgeschlagen. Stellen Sie bitte sicher, ob das WiFi-Netzwerk richtig konfiguriert wurde. Wenn Sie bestätigen, dass das Problem gelöst wurde, versuchen Sie die WiFi-Verbindung erneut.</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Fehler beim Abrufen der IP-Adresse des WiFi-Netzwerks des Diagnosesteckers. Mögliche Ursachen wie folgt:\n
+    1. Öffentliches WiFi-Netzwerk unterstützt keine Broadcasts. \n
+    2. Die WiFi-Einstellung des Diagnosesteckers ist möglicherweise falsch. \n
+    Wenn Sie bestätigen, dass das Problem gelöst wurde, versuchen Sie die WiFi-Verbindung erneut.\n</string>
+    <string name="msg_wifi_state_no_active">1. Bitte überprüfen Sie, ob der Stecker eingeschaltet und die Initialisierung abgeschlossen ist (Nach Einschalten des Steckers blinkt die Kontrollleuchte für Kommunikation kontinuierlich. Wenn die Kontrollleuchte nicht blinkt und ein Piepston ertönt, ist Initialisierung des Steckers abgeschlossen). \n
+                                            2. Wenn Sie sicher sind, dass Initialisierung des Steckers abgeschlossen ist, versuchen Sie bitte es erneut. \n
+                                            3.  Wenn das Problem weiterhin besteht, schalten Sie bitte das Gerät erneut ein oder ziehen Sie den Stecker ab und stecken ihn ein und versuchen es erneut. \n</string>
+    <string name="msg_wifi_connect_state_success">WiFi-Netzwerkverbindung erfolgreich</string>
+    <string name="msg_serialport_connect_state_fail">Serielle Schnittstelle konnte nicht geöffnet werden</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Der Diagnosestecker hat keinen Strom, bitte prüfen Sie, ob der OBD-Anschluss des Fahrzeugs mit dem Gerät verbunden ist.</string>
+    <string name="msg_serialport_connect_state_success">Serielle Schnittstelle wurde erfolgreich geöffnet</string>
+    <string name="msg_wifi_not_set_service_ip_port">Die Server-IP-Adresse oder die Schnittstelle wird nicht eingestellt. Stellen Sie zuerst die Server-IP-Adresse und die Schnittstelle ein.</string>
+    <string name="msg_system_dpulms_error_tips">Die Software-Version für die Bluetooth-Verbindung ist niedrig. Gehen Sie zum "Update Center", um "Verbindungsverwaltungsdienst des Diagnosesteckers" zu aktualisieren. \n</string>
+
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa" msgid="3805736726317410714">"Verbunden (durch WLAN-Assistent)"</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range" msgid="1136191511238508967">"Nicht in Reichweite"</string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Saved</string>
+    <string name="wifi_security_none">None</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">IP-Adresse des Ethernet-Netzwerks vom Diagnosestecker konnte nicht abgerufen werden.</string>
+    <string name="msg_ethernet_connect_state_fail">Ethernet-Netzwerkverbindung fehlgeschlagen.</string>
+    <string name="msg_ethernet_connect_state_success">Ethernet-Netzwerkverbindung erfolgreich.</string>
+
+    <string name="msg_dhcp_start_service_status_success">DHCP-Service wurde erfolgreich gestartet</string>
+    <string name="msg_dhcp_start_service_status_fail">Start des DHCP-Services fehlgeschlagen</string>
+    <string name="msg_dhcp_stop_service_status_success">DHCP-Service wurde erfolgreich beendet</string>
+    <string name="msg_dhcp_stop_service_status_fail">DHCP-Service konnte nicht beendet werden</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">IP-Adresszuweisung fehlgeschlagen</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">IP-Adresszuweisung erfolgreich, IP-Adresse ist %s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Netzwerkkabel angeschlossen</string>
+    <string name="msg_dhcp_cable_status_down">Netzwerkkabel herausgezogen</string>
+</resources>

@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.android'
+buildscript {
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        // options.compilerArgs.add('-Xbootclasspath/p:..\\modules\\PhysicsLinkBusiness\\libs\\framework.jar')
+    }
+}
+dependencies {
+    // compileOnly files('libs/framework.jar')
+    def dataDependences = rootProject.ext.dataDependencies
+    api files('libs/second-wifi-interface.jar')
+    implementation project(':BaseProject')
+    implementation dataDependences.kotlin
+    implementation dataDependences.okhttp3
+    implementation dataDependences.okhttp3LoggerInterceptor
+}
+
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    namespace 'com.cnlaunch.bluetooth'
+    compileSdkVersion gConfig["compileSdkVersion"]
+    //buildToolsVersion gConfig["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+        flavorDimensions "product"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+    productFlavors{
+        SmartSafeBase{
+            dimension 'product'
+        }
+        ThinkCarBase{
+            dimension 'product'
+        }
+        LaunchBase{
+            dimension 'product'
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            jniLibs.srcDirs = ['libs']
+        }
+        // Move the tests to tests/java, tests/res, etc...
+        // androidTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+//        defaultConfig {
+//            minSdkVersion rootProject.ext.minSdkVersion
+//            targetSdkVersion rootProject.ext.targetSdkVersion
+//    }
+}
+
+
+    buildFeatures {
+        renderScript true
+        aidl true
+    }
+}

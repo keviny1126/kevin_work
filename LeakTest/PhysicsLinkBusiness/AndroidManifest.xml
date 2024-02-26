@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cnlaunch.bluetooth" >
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-feature android:name="android.hardware.usb.host" />
+    <uses-permission android:name="android.hardware.usb.host" />
+    <uses-permission android:name="ANDROID.PERMISSION.HARDWARE_TEST" />
+
+    <application>
+        <uses-library android:name="com.newchip.second.wifi.service" android:required="false" />
+    </application>
+</manifest>

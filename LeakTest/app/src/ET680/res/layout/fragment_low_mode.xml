@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/dp_4"
+    android:paddingEnd="@dimen/dp_4"
+    android:paddingBottom="@dimen/dp_4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_pressure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_shadow_white_bg"
+        app:layout_constraintBottom_toTopOf="@+id/cl_show_progress"
+        app:layout_constraintEnd_toStartOf="@+id/cl_show_leakage"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/tv_cur_pre"
+            style="@style/commonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/realtime_pressure"
+            android:textColor="@color/color_00A65C"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_pressure_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/shape_font_bg"
+            android:padding="@dimen/dp_6"
+            android:text="00.00"
+            android:textColor="@color/color_3f3f3f"
+            android:textSize="@dimen/sp_30"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/dpv_show_prevalue"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_prevalue"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_prevalue"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_prevalue" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_pressure_value"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/dp_6"
+            android:text="00.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_30"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_pressure_background"
+            app:layout_constraintEnd_toEndOf="@+id/tv_pressure_background"
+            app:layout_constraintStart_toStartOf="@+id/tv_pressure_background"
+            app:layout_constraintTop_toTopOf="@+id/tv_pressure_background" />
+
+        <com.power.baseproject.widget.ShowPressureView
+            android:id="@+id/dpv_show_prevalue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cur_pre"
+            app:stroke_width_dial="@dimen/dp_5"
+            app:text_size_dial="@dimen/sp_8" />
+
+        <TextView
+            android:id="@+id/pressureUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(kpa)"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pressure_value" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_leakage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_shadow_white_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintEnd_toStartOf="@+id/cl_start_function"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/cl_show_pressure"
+        app:layout_constraintTop_toTopOf="@+id/cl_show_pressure">
+
+        <TextView
+            android:id="@+id/tv_leak_name"
+            style="@style/commonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="@string/leakage"
+            android:textColor="@color/color_00A65C"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_leak_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:background="@drawable/shape_font_bg"
+            android:padding="@dimen/dp_6"
+            android:text="00.00"
+            android:textColor="@color/color_3f3f3f"
+            android:textSize="@dimen/sp_30"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_leakvalue" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_leakage_value"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/dp_6"
+            android:text="00.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_30"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_leak_background"
+            app:layout_constraintEnd_toEndOf="@+id/tv_leak_background"
+            app:layout_constraintStart_toStartOf="@+id/tv_leak_background"
+            app:layout_constraintTop_toTopOf="@+id/tv_leak_background" />
+
+        <com.power.baseproject.widget.ShowPressureView
+            android:id="@+id/dpv_show_leakvalue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_leak_name"
+            app:stroke_width_dial="@dimen/dp_5"
+            app:text_size_dial="@dimen/sp_8" />
+
+        <TextView
+            android:id="@+id/leakUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(pa)"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_leakage_value" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_start_function"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_shadow_white_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@+id/cl_show_leakage"
+        app:layout_constraintTop_toTopOf="@+id/cl_show_pressure">
+
+        <TextView
+            android:id="@+id/tvTargetTitle"
+            style="@style/commonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_13"
+            android:text="@string/target_value_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_show_target"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_show_target"
+            style="@style/commonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTargetTitle" />
+
+        <TextView
+            android:id="@+id/tvSerialNoTitle"
+            style="@style/commonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_13"
+            android:layout_marginTop="@dimen/dp_13"
+            android:text="@string/serial_number_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_show_serialNo"
+            style="@style/commonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textSize="@dimen/sp_15"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvSerialNoTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvSerialNoTitle" />
+
+        <TextView
+            android:id="@+id/tv_test_status"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_32"
+            android:layout_margin="@dimen/dp_13"
+            android:background="@drawable/gray_text_bg_two"
+            android:gravity="center"
+            android:text="----"
+            android:textColor="@color/color_00A6E3"
+            android:textSize="@dimen/sp_23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_show_target" />
+
+        <Button
+            android:id="@+id/tvSettingClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_13"
+            android:background="@drawable/selector_common_button"
+            android:paddingStart="@dimen/dp_18"
+            android:paddingBottom="@dimen/dp_2"
+            android:text="@string/setting"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            app:drawableStartCompat="@drawable/icon_setting_leak"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvStartClick"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_test_status" />
+
+        <Button
+            android:id="@+id/tvStartClick"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_13"
+            android:background="@drawable/selector_common_button"
+            android:paddingStart="@dimen/dp_18"
+            android:paddingBottom="@dimen/dp_2"
+            android:text="@string/start_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            app:drawableStartCompat="@drawable/icon_start_leak"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSettingClick"
+            app:layout_constraintEnd_toStartOf="@+id/tvStopClick"
+            app:layout_constraintStart_toEndOf="@+id/tvSettingClick"
+            app:layout_constraintTop_toTopOf="@+id/tvSettingClick" />
+
+        <Button
+            android:id="@+id/tvStopClick"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_13"
+            android:layout_marginEnd="@dimen/dp_13"
+            android:background="@drawable/selector_common_button"
+            android:paddingStart="@dimen/dp_18"
+            android:paddingBottom="@dimen/dp_2"
+            android:text="@string/stop_it"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            app:drawableStartCompat="@drawable/icon_stop_leak"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStartClick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvStartClick"
+            app:layout_constraintTop_toTopOf="@+id/tvStartClick" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_progress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_shadow_white_bg"
+        android:padding="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/tv_progress_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test_progress"
+            android:textColor="@color/color_00A65C"
+            android:textSize="@dimen/sp_11"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.PressureProgressView
+            android:id="@+id/dpv_show_progress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_progress_name"
+            app:title_height="@dimen/dp_19" />
+
+        <LinearLayout
+            android:id="@+id/cl_x_axis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_24"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/dp_19"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_progress"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_progress"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_progress">
+
+            <TextView
+                android:id="@+id/tv_prepare_time"
+                style="@style/commonTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/prepare_time"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_inflation_time"
+                style="@style/commonTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/inflation_time"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_voltage_stabilization_time"
+                style="@style/commonTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/voltage_stabilization_time"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_leak_time"
+                style="@style/commonTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/leak_time"
+                android:textSize="@dimen/sp_8" />
+
+            <TextView
+                android:id="@+id/tv_exhaust_time"
+                style="@style/commonTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/exhaust_time"
+                android:textSize="@dimen/sp_8" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

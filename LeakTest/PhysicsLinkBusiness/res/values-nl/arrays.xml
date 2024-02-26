@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Wi-Fi settings -->
+
+    <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
+    <!-- Wi-Fi settings. The status messages when the network is unknown. -->
+    <string-array name="wifi_status">
+        <!-- Status message of Wi-Fi when it is idle. -->
+        <item></item>
+        <!-- Status message of Wi-Fi when it is scanning. -->
+        <item>Scanning\u2026</item>
+        <!-- Status message of Wi-Fi when it is connecting. -->
+        <item>Verbinden\u2026</item>
+        <!-- Status message of Wi-Fi when it is authenticating. -->
+        <item>Authenticating\u2026</item>
+        <!-- Status message of Wi-Fi when it is obtaining IP address. -->
+        <item>Obtaining IP address\u2026</item>
+        <!-- Status message of Wi-Fi when it is connected. -->
+        <item>Verbonden</item>
+        <!-- Status message of Wi-Fi when it is suspended. -->
+        <item>Uitgesteld</item>
+        <!-- Status message of Wi-Fi when it is disconnecting. -->
+        <item>Verbroken\u2026</item>
+        <!-- Status message of Wi-Fi when it is disconnected. -->
+        <item>Verbroken</item>
+        <!-- Status message of Wi-Fi when it is a failure. -->
+        <item>Niet succesvol</item>
+        <!-- Status message of Wi-Fi when it is blocked. -->
+        <item>Geblokkeerd</item>
+        <!-- Status message of Wi-Fi when connectiong is being verified. -->
+        <item>Temporarily avoiding poor connection</item>
+        <!-- Status message of Wi-Fi when CAPTIVE_PORTAL_CHECK. -->
+        <item>Checking if network is a captive portal</item>
+    </string-array>
+
+    <!-- Match this with the order of NetworkInfo.DetailedState. --> <skip />
+    <!-- Wi-Fi settings. The status messages when the network is known. -->
+    <string-array name="wifi_status_with_ssid">
+        <!-- Status message of Wi-Fi when it is idle. -->
+        <item></item>
+        <!-- Status message of Wi-Fi when it is scanning. -->
+        <item>Scanning\u2026</item>
+        <!-- Status message of Wi-Fi when it is connecting to a network. -->
+        <item>Verbonden naar<xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <!-- Status message of Wi-Fi when it is authenticating with a network. -->
+        <item>Authenticating with <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <!-- Status message of Wi-Fi when it is obtaining IP address from a network. -->
+        <item>Obtaining IP address from <xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <!-- Status message of Wi-Fi when it is connected to a network. -->
+        <item>Verbonden naar<xliff:g id="network_name">%1$s</xliff:g></item>
+        <!-- Status message of Wi-Fi when it is suspended. -->
+        <item>Uitgesteld</item>
+        <!-- Status message of Wi-Fi when it is disconnecting from a network. -->
+        <item>Verbroken van<xliff:g id="network_name">%1$s</xliff:g>\u2026</item>
+        <!-- Status message of Wi-Fi when it is disconnected. -->
+        <item>Verbroken</item>
+        <!-- Status message of Wi-Fi when it is a failure. -->
+        <item>Niet succesvol</item>
+        <!-- Status message of Wi-Fi when it is blocked. -->
+        <item>Geblokkeerd</item>
+        <!-- Status message of Wi-Fi when connectiong is being verified. -->
+        <item>Temporarily avoiding poor connection</item>
+        <!-- Status message of Wi-Fi when CAPTIVE_PORTAL_CHECK. -->
+        <item>Checking if network is a captive portal</item>
+    </string-array>
+    
+</resources>

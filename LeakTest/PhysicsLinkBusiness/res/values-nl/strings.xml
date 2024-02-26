@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Verbinding verbreken:</string>
+    <string name="bluetooth_connecting">Verbinding maken</string>
+    <string name="bluetooth_no_search_device">De bluetooth die u wilt verbinden niet gedetecteerd, is het in de buurt of normaal opgestart?</string>
+    <string name="bluetooth_connected">Aangesloten</string>
+    <string name="bluetooth_no_connected">Niet aangesloten</string>
+    <string name="bluetooth_connect_fail">Mislukte verbinding</string>
+    <string name="bluetooth_connect_lost">Verbinding pauze</string>
+    <string name="bluetooth_connect_success">Bluetooth vebonden</string>
+    <string name="bluetooth_reconnect">Verbinding maken met bluetooth mislukt, opnieuw verbinding maken...</string>
+    <string name="bluetooth_scan_start">Scan</string>
+    <string name="bluetooth_scaning">Scannen...</string>
+    <string name="bluetooth_scan_end">Scannen einde</string>
+
+    <string name="msg_usb_connect_state_success">USB verbinding successvol </string>
+    <string name="msg_usb_disconnect_state_success">USB verbroken</string>
+    <string name="msg_usb_connect_state_fail">USB verbinding mislukt</string>
+    <string name="msg_usb_disconnect_state_fail">USB  verbreking mislukt</string>
+    <string name="msg_usb_state_no_device_detected">Geen USB apparaat gedetecteerd</string>
+    <string name="msg_usb_state_no_permission">USB apparaat heeft geen permissies </string>
+    <string name="msg_usb_state_no_exclusive_access">Geen permissie voor exclusief USB apparaat</string>
+    <string name="msg_usb_state_device_not_support">USB apparaat wordt niet ondersteund</string>
+    <string name="msg_system_error_tips">Sorry, Applicatie initialisatie fout, probeer de volgende suggesties, aub:\n\n
+1?￠Als u een USB diagnose gebruikt, koppel de USB kabel los, plug de USB kabel weer voor 5 seconden in. Start dan de diagnose.\n\n
+2?￠Als het probleem nog niet is opgelost,  Controleer of er andere LAUNCH diagnose software actief is, zo ja, stop dan de andere LAUNCH diagnose\n\n
+3?￠Als het probleem nog niet is opgelost, herstart apparaat, aub.\n\n</string>
+    <string name="msg_wifi_connect_state_fail">WiFi netwerk connectie mislukt. Check of WiFi netwerk is geconfigureerd. Als dit is uitgesloten,  probeer WiFi netwerk connectie opnieuw, aub.</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Ophalen connector WiFi netwerk IP addres mislukt. De mogelijke oorzaken:\n
+1. Openbaar WiFi netwerk ondersteunt broadcast niet.\n
+2. Diagnose connector WiFi instelling kan onjuist zijn.\n
+Als het probleem is uitgesloten, probeer WiFi netwerk connectie opnieuw, aub\n</string>
+    <string name="msg_wifi_state_no_active">1. Controleer of de connector is opgestart en geinitialiseerd, aub!  \n
+                                        2. Probeer opnieuw als de connector is geinitialiseerd, aub! \n
+                                        3. Herstart de apparaat en probeer opnieuw als deze fout blijft!! \n</string>
+    <string name="msg_wifi_connect_state_success">WiFi netwerk verbinding gelukt. </string>
+    <string name="msg_serialport_connect_state_fail">Openen van seriele port mislukt.</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Connectors hebben geen stroom, controleer of de voertuig OBD stekker met het apparaat is verbonden, aub.</string>
+    <string name="msg_serialport_connect_state_success">Openen van seriele port succesvol.</string>
+    <string name="msg_wifi_not_set_service_ip_port">Het server IP adres of port is niet ingesteld. Stel het server IP adres en port eerst in.</string>
+    <string name="msg_system_dpulms_error_tips">De software versie behorend tot Bluetooth connectie is laag. Ga naar \'Update Center\' om \'DPU Link Manager Services\'.\n te downloaden, aub.</string>
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa">Verbonden via WiFi assistent</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range">Niet in bereik</string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Bewaard</string>
+    <string name="wifi_security_none">Geen</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">Verkrijgen connector ethernet netwerk IP adres  mislukt</string>
+    <string name="msg_ethernet_connect_state_fail">Ethernet netwerk connectie mislukt</string>
+    <string name="msg_ethernet_connect_state_success">Ethernet netwerk connectie succesvol</string>
+
+    <string name="msg_dhcp_start_service_status_success">De DHCP service succesvol gestart</string>
+    <string name="msg_dhcp_start_service_status_fail">Start the DHCP service failure</string>
+    <string name="msg_dhcp_stop_service_status_success">De DHCP service succesvol gestopt</string>
+    <string name="msg_dhcp_stop_service_status_fail">De DHCP service stop mislukt</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">IP adres toewijzing mislukt</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">IP adres toewijzing succesvol. IP adres is %s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Netwerkkabel ingeplugd</string>
+    <string name="msg_dhcp_cable_status_down">Netwerkkabel uitgeplugd</string>
+</resources>

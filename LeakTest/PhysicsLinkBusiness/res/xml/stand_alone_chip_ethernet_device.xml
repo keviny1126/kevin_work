@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>	
+	<!-- DBSCAR [VID:0x0525/1317 PID:0xA4A2/42146] -->
+	<usb-device vendor-id="1317" product-id="42146" />
+</resources>

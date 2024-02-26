@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:splitMotionEvents="false">
+
+    <TextView
+        android:id="@+id/img_detection"
+        android:layout_width="@dimen/dp_156"
+        android:layout_height="@dimen/dp_260"
+        android:background="@drawable/selector_main_lowmode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_data"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetection"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_49"
+        android:text="@string/leaktest_detection"
+        app:layout_constraintBottom_toBottomOf="@+id/img_detection"
+        app:layout_constraintEnd_toEndOf="@+id/img_detection"
+        app:layout_constraintStart_toStartOf="@+id/img_detection" />
+
+    <TextView
+        android:id="@+id/img_data"
+        android:layout_width="@dimen/dp_156"
+        android:layout_height="@dimen/dp_260"
+        android:background="@drawable/selector_main_data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_setting"
+        app:layout_constraintStart_toEndOf="@+id/img_detection"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvData"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_49"
+        android:text="@string/data_management"
+        app:layout_constraintBottom_toBottomOf="@+id/img_data"
+        app:layout_constraintEnd_toEndOf="@+id/img_data"
+        app:layout_constraintStart_toStartOf="@+id/img_data" />
+
+    <TextView
+        android:id="@+id/img_setting"
+        android:layout_width="@dimen/dp_156"
+        android:layout_height="@dimen/dp_260"
+        android:background="@drawable/selector_main_setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_data"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSetting"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_49"
+        android:text="@string/system_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/img_setting"
+        app:layout_constraintEnd_toEndOf="@+id/img_setting"
+        app:layout_constraintStart_toStartOf="@+id/img_setting" />
+</androidx.constraintlayout.widget.ConstraintLayout>

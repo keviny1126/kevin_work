@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    namespace 'com.power.baseproject'
+    compileSdkVersion gConfig["compileSdkVersion"]
+    //buildToolsVersion gConfig["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        flavorDimensions "product"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+    productFlavors {
+        SmartSafeBase {
+            dimension 'product'
+        }
+        ThinkCarBase {
+            dimension 'product'
+        }
+        LaunchBase {
+            dimension 'product'
+        }
+    }
+
+}
+
+dependencies {
+    def dataDependences = rootProject.ext.dataDependencies
+    implementation dataDependences.kotlin
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation dataDependences.appcompat
+    implementation dataDependences.livedata
+    implementation dataDependences.viewmodel
+    implementation dataDependences.retrofit
+    implementation dataDependences.retrofitConverterGson
+    implementation dataDependences.retorfitConverterScalar
+    implementation dataDependences.okhttp3
+    implementation dataDependences.okhttp3LoggerInterceptor
+    api dataDependences.koinCore
+    api dataDependences.koinAndroid
+    implementation 'com.google.android.material:material:1.3.0'
+
+    implementation dataDependences.roomRuntime
+    annotationProcessor dataDependences.roomCompiler
+    kapt dataDependences.roomCompiler
+    implementation dataDependences.roomKtx
+    implementation dataDependences.libaums
+    api 'com.jeremyliao:live-event-bus-x:1.7.2'
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

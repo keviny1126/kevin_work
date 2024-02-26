@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">در حال قطع اتصال:</string>
+    <string name="bluetooth_connecting">در حال اتصال</string>
+    <string name="bluetooth_no_search_device">بلوتوث شناسایی نشد می خواهید متصل شوید، آیا آن نزدیک است یا متصل؟</string>
+    <string name="bluetooth_connected">متصل</string>
+    <string name="bluetooth_no_connected">متصل نیست</string>
+    <string name="bluetooth_connect_fail">عدم اتصال</string>
+    <string name="bluetooth_connect_lost">قطع ارتباط</string>
+    <string name="bluetooth_connect_success">بلوتوث وصل شد</string>
+    <string name="bluetooth_reconnect">خطا در اتصال بلوتوث، در حال اتصال دوباره...</string>
+    <string name="bluetooth_scan_start">اسکن</string>
+    <string name="bluetooth_scaning">در حال اسکن...</string>
+    <string name="bluetooth_scan_end">پایان اسکن</string>
+</resources>

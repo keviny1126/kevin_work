@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">odpojovací:</string>
+    <string name="bluetooth_connecting">spojovací</string>
+    <string name="bluetooth_no_search_device">Nezjistí Bluetooth, které chcete připojit, je to blízko, nebo poháněné normálně?</string>
+    <string name="bluetooth_connected">spojený</string>
+    <string name="bluetooth_no_connected">Není spojeno</string>
+    <string name="bluetooth_connect_fail">připojení se nezdařilo</string>
+    <string name="bluetooth_connect_lost">Spojení je přerušeno</string>
+    <string name="bluetooth_connect_success">Je připojen Bluetooth</string>
+    <string name="bluetooth_reconnect">Nepodařilo se připojit bluetooth, znovu připojit ...</string>
+    <string name="bluetooth_scan_start">Začne skenovat</string>
+    <string name="bluetooth_scaning">skenuje...</string>
+    <string name="bluetooth_scan_end">konec skenování</string>
+</resources>

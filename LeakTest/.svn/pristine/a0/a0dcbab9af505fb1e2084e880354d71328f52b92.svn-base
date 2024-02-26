@@ -1,0 +1,806 @@
+package com.newchip.tool.leaktest
+
+import android.Manifest
+import android.app.AlarmManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.net.wifi.WifiManager
+import android.os.Build
+import android.os.Bundle
+import android.os.IBinder
+import android.os.Parcelable
+import android.provider.Settings
+import android.text.format.DateFormat
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.core.app.ActivityCompat
+import androidx.lifecycle.Lifecycle
+import com.cnlaunch.physics.impl.IPhysics
+import com.jeremyliao.liveeventbus.LiveEventBus
+import com.newchip.tool.leaktest.databinding.ActivityMainBinding
+import com.newchip.tool.leaktest.ui.MainViewModel
+import com.newchip.tool.leaktest.utils.DeviceConnectUtils
+import com.newchip.tool.leaktest.utils.LeakSerialOrderUtils
+import com.newchip.tool.leaktest.utils.NetworkUtil
+import com.newchip.tool.leaktest.widget.FactoryService
+import com.newchip.tool.leaktest.widget.ProgressDialog
+import com.power.baseproject.bean.ClientAppInfo
+import com.power.baseproject.bean.FirmwareInfo
+import com.power.baseproject.bean.IpBean
+import com.power.baseproject.bean.PermissionListBean
+import com.power.baseproject.db.DataRepository
+import com.power.baseproject.ktbase.dialog.MessageDialog
+import com.power.baseproject.ktbase.model.BaseResponse
+import com.power.baseproject.ktbase.model.DataState
+import com.power.baseproject.ktbase.ui.BaseActivity
+import com.power.baseproject.utils.CmdControl
+import com.power.baseproject.utils.ConstantsUtils
+import com.power.baseproject.utils.EasyPreferences
+import com.power.baseproject.utils.FileUtils
+import com.power.baseproject.utils.LiveEventBusConstants
+import com.power.baseproject.utils.PathUtils
+import com.power.baseproject.utils.SoundUtils
+import com.power.baseproject.utils.Tools
+import com.power.baseproject.utils.log.LogConfig
+import com.power.baseproject.utils.log.LogUtil
+import com.power.baseproject.widget.NToast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.TimeZone
+
+
+class MainActivity : BaseActivity() {
+    private lateinit var binding: ActivityMainBinding
+    var mDeviceIphysics: IPhysics? = null
+    val vm: MainViewModel by viewModel()
+    private var lastFirmwareVersion: String? = null
+    private var curFirmwareVersion: String? = null
+    private var reConnect = true
+    private var firmDialog: ProgressDialog? = null
+    private var awaitTimeout = false
+    private var needCheckSoftUpdate = true
+    private var networkConnectChangedReceiver = NetworkConnectChangedReceiver()
+    private lateinit var curAppVersion: String
+    private var deviceNum: String? = null
+    var msgDialog: MessageDialog? = null
+    private var lastAppVersion: String? = null//服务器最新app版本
+    private var isServiceStart = false
+    private var registBroadcast = false
+//    private var needStartFactory = false
+    private var controlledEndDialog: MessageDialog? = null
+    private var mPermissionAllList = arrayListOf(
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_FINE_LOCATION
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        launch(Dispatchers.IO) {
+            CmdControl.showOrHideStatusBar(true)
+        }
+        curAppVersion = Tools.getAppVersionName(this)
+        initPermission(mPermissionAllList)
+        vm.init()
+        SoundUtils.instance.init()
+//        if (ForwardUtils.instance.client){
+//            //主控端先连接成功后再初始化资源
+//            registerBroadcast()
+//            return
+//        }
+        initObserver()
+        initData()
+        registerBroadcast()
+    }
+
+    private fun initData() {
+        mDeviceIphysics = DeviceConnectUtils.instance.getCurrentDevice()
+        if (mDeviceIphysics == null) {
+            vm.connectSerialPort(this)
+            return
+        }
+        reConnect = true
+        readDeviceInfo()
+        initTimeZone()
+    }
+
+    private fun initTimeZone() {
+        val autoTimes = Settings.Global.getInt(contentResolver, Settings.Global.AUTO_TIME)
+        if (autoTimes != 1) {
+            Settings.Global.putInt(
+                contentResolver, Settings.Global.AUTO_TIME, 1
+            )
+        }
+        val is24Hour: Boolean = DateFormat.is24HourFormat(this)
+        if (is24Hour) {
+            Settings.System.putString(
+                contentResolver, Settings.System.TIME_12_24, "24"
+            )
+        }
+        LogUtil.i("kevin", "autoTimes:$autoTimes----is24Hour:$is24Hour")
+    }
+
+    private fun registerBroadcast() {
+        val filter = IntentFilter()
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION)
+        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION)
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        filter.addAction(ConstantsUtils.INPUT_SERIALNUM_ACTION)
+        this.registerReceiver(networkConnectChangedReceiver, filter)
+        registBroadcast = true
+    }
+
+    private fun initObserver() {
+        vm.analysisDataForReceiver(this)
+        vm.startHeartJob()
+        LiveEventBus.get(
+            LiveEventBusConstants.SEND_REQUEST_PERMISSION,
+            PermissionListBean::class.java
+        ).observe(this) {
+            initPermission(it.permissionList)
+        }
+        LiveEventBus.get(LiveEventBusConstants.SERIAL_NEED_CONNECT, Exception::class.java)
+            .observe(this) {
+                if (reConnect) {
+                    reConnect = false
+                    LogUtil.e("kevin", "----(0-0)--------设备串口重连---------(0-0)---")
+                    showToast(R.string.serial_senddata_failed)
+                    DeviceConnectUtils.instance.closeCurrentDevice()
+                    vm.connectSerialPort(this)
+                }
+            }
+
+        //串口连接结果
+        vm.deviceSerialLiveData.observe(this) {
+            when (it.dataState) {
+                DataState.STATE_LOADING -> {
+                    //showToast(R.string.connecting_serial)
+                }
+
+                DataState.STATE_SUCCESS -> {
+                    reConnect = true
+                    if (it.data!!) {
+                        mDeviceIphysics = DeviceConnectUtils.instance.getCurrentDevice()
+                        readDeviceInfo()
+                    }
+                }
+
+                else -> {
+                    showToast(R.string.connecting_serial_failed)
+                    reConnect = true
+                }
+            }
+        }
+        vm.deviceInfoLiveData.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            curFirmwareVersion = it.softVersion
+            EasyPreferences.instance.put(ConstantsUtils.FIRMWARE_VERSION, curFirmwareVersion)
+            deviceNum = it.deviceNum
+            if (deviceNum != null && deviceNum == "988300000001") {//这里是为了兼容第一批设备，预置的初始序列号段不对
+                deviceNum = "806030000100"
+            }
+            EasyPreferences.instance.put(ConstantsUtils.DEVICE_NUMBER, deviceNum)
+            LogUtil.i("kevin", "设备信息获取:${it}")
+            if (!NetworkUtil.isConnected(this)) {
+                return@observe
+            }
+            if (needCheckSoftUpdate) {
+                needCheckSoftUpdate = false
+                vm.checkAppVersionForSS(
+                    curAppVersion,
+                    deviceNum!!,
+                    vm.checkAppUpdateSS
+                )
+            }
+//            initForward()
+        }
+        vm.checkAppUpdateSS.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            checkUpdateSSApp(it)
+        }
+
+        //APP下载结果
+        vm.downloadAppLiveData.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            when (it.dataState) {
+                DataState.STATE_LOADING -> {
+                    LogUtil.i("kevin", "APP下载中...")
+                    showCenterLoading(R.string.app_downloading)
+                }
+
+                DataState.STATE_SUCCESS -> {
+                    hideCenterLoading()
+                    showToast(R.string.app_installing)
+                    val apkPath = it.data as String
+                    LogUtil.i("kevin", "APP下载成功:$apkPath")
+                    if (!Tools.installApk(apkPath)) {
+                        NToast.shortToast(this, R.string.install_failed)
+                    }
+                }
+
+                else -> {
+                    hideCenterLoading()
+                    showToast(R.string.app_download_failed)
+                    LogUtil.i("kevin", "APP下载失败 errorStatus:${it.message} ")
+                }
+            }
+        }
+
+        vm.firmwareLastVersionForSS.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            checkUpdateSSFirmware(it)
+        }
+
+        //服务器固件信息
+        vm.firmwareLastVersion.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            checkUpdateFirmware(it)
+        }
+        vm.downloadLiveData.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            when (it.dataState) {
+                DataState.STATE_LOADING -> {
+                    LogUtil.i("kevin", "固件下载中...")
+                    showCenterLoading(R.string.firmware_downloading)
+                }
+
+                DataState.STATE_SUCCESS -> {
+                    hideCenterLoading()
+                    LogUtil.i("kevin", "固件下载成功:${it.data}")
+                    val binPath = it.data as String
+                    startUpgrade(binPath)
+                }
+
+                else -> {
+                    hideCenterLoading()
+                }
+            }
+        }
+        //固件升级结果
+        vm.downloadStateLiveData.observe(this) {
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            LogUtil.e("kevin", "${it.message}")
+            vm.upgrading = false
+            when (it.stateType) {
+                0 -> {
+                    firmDialog?.dismiss()
+                    showToast(R.string.firmware_updata_failed)
+                }
+
+                1 -> {
+                    awaitTimeout = false
+                    firmDialog?.dismiss()
+                    showToast(R.string.firmware_updata_success)
+                    LeakSerialOrderUtils.ackUpdateOrder(
+                        DeviceConnectUtils.instance.getCurrentDevice()!!,
+                        "01"
+                    )
+                    launch {
+                        withContext(Dispatchers.IO) {
+                            delay(1000)
+                        }
+                        vm.getDeviceInfo()
+                    }
+                }
+
+                2 -> {
+                    LogUtil.e("ykw", "等待下位机给出升级成功指令")
+                    launch {
+                        //开启后不要马上关闭
+                        awaitTimeout = true
+                        val job = async(Dispatchers.IO) { vm.timingClose(5) }
+                        job.await()
+                        if (awaitTimeout) {
+                            LogUtil.e("ykw", "升级等待超时！")
+                            withContext(Dispatchers.Main) {
+                                firmDialog?.dismiss()
+                                showToast(R.string.firmware_updata_failed)
+                            }
+                        }
+                    }
+                }
+
+                else -> {
+                    firmDialog?.dismiss()
+                }
+            }
+
+        }
+        //固件升级进度条
+        vm.downloadProgressLiveData.observe(this) {
+            //更新进度条
+            if (firmDialog != null && firmDialog!!.isShowing) {
+                firmDialog?.setProgressBar(it.progress)
+            }
+        }
+
+        vm.timeZoneLiveData.observe(this) {
+            when (it.dataState) {
+                DataState.STATE_LOADING -> {
+                }
+
+                DataState.STATE_SUCCESS -> {
+                    val bean = it.data as IpBean
+                    val timeZoneId = TimeZone.getDefault().id
+                    LogUtil.i("kevin", "当前系统时区:$timeZoneId ---- ip地址时区:${bean.timezone}")
+                    if (bean.timezone != null && !timeZoneId.equals(bean.timezone, true)) {
+                        LogUtil.i("kevin", "重新设置时区")
+                        val am = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                        am.setTimeZone(bean.timezone)
+
+                        sendBroadcast(Intent(Intent.ACTION_TIME_CHANGED))
+                    }
+                }
+
+                else -> {
+                }
+            }
+        }
+        LiveEventBus.get(LiveEventBusConstants.UPDATE_FIRMWARE, String::class.java).observe(this) {
+            startUpgrade(it)
+        }
+        LiveEventBus.get(LiveEventBusConstants.CHECK_UPLOAD_DATA, Boolean::class.java)
+            .observe(this) {
+                if (it) {
+                    launch {
+//                        if (!ForwardUtils.instance.client) {
+//                            //主控端才能获取userId上传报告
+//                            LogUtil.i("kevin", "current device isn't client")
+//                            return@launch
+//                        }
+                        if (!NetworkUtil.isConnected(this@MainActivity)) {
+                            return@launch
+                        }
+                        val userId = vm.getUserAndToken(this@MainActivity)
+                        if (userId.isNullOrEmpty()) {
+                            LogUtil.i("kevin", "userId is null")
+                            return@launch
+                        }
+                        val testDataList = withContext(Dispatchers.IO) {
+                            DataRepository.instance.getAllTestData(this@MainActivity)
+                        }
+                        if (testDataList.isNullOrEmpty()) {
+                            LogUtil.i("kevin", "testDataList is null")
+                            return@launch
+                        }
+                        vm.uploadReportList(this@MainActivity, testDataList, userId)
+                    }
+                }
+            }
+    }
+
+    override fun needLoaddialog(): Boolean {
+        return true
+    }
+
+    private fun checkFirmwareUpdate() {
+        if (curFirmwareVersion == null || deviceNum == null) {
+            return
+        }
+        if (LogConfig.instance.isDebug) {
+            vm.getFirmwareVersion()
+            return
+        }
+        vm.checkFirmwareVersionForSS(
+            curAppVersion,
+            curFirmwareVersion!!,
+            deviceNum!!
+        )
+    }
+
+    private fun checkUpdateSSApp(it: BaseResponse<ClientAppInfo>) {
+        when (it.dataState) {
+            DataState.STATE_LOADING -> {
+            }
+
+            DataState.STATE_SUCCESS -> {
+                val info = it.data as ClientAppInfo
+                val bean = info.clientInfo
+                if (bean?.url == null || bean.version == null) {
+                    checkFirmwareUpdate()
+                    return
+                }
+                lastAppVersion = bean.version
+                if (bean.isImportant == 1) {
+                    //强制更新
+                    val downloadPath = bean.url
+                    showMessageDialog(getString(
+                        R.string.new_version_update,
+                        "",
+                        lastAppVersion
+                    ),
+                        confirm = R.string.download,
+                        cancelable = false,
+                        confirmClickListener = {
+                            vm.startDownloadApp(
+                                downloadPath,
+                                PathUtils.getAppSoftPath(lastAppVersion!!) + "LeakTest_V${lastAppVersion}.apk"
+                            ) {}
+                        })
+                    return
+                }
+                checkFirmwareUpdate()
+            }
+
+            else -> {
+                checkFirmwareUpdate()
+            }
+        }
+    }
+
+    private fun checkUpdateSSFirmware(it: BaseResponse<ClientAppInfo>) {
+        when (it.dataState) {
+            DataState.STATE_LOADING -> {
+            }
+
+            DataState.STATE_SUCCESS -> {
+                val info = it.data as ClientAppInfo
+                val bean = info.clientInfo
+                if (bean?.url == null || bean.version == null) {
+                    return
+                }
+                lastFirmwareVersion = bean.version
+                if (bean.isImportant == 1) {
+                    val downloadPath = bean.url
+                    vm.startDownload(
+                        downloadPath,
+                        lastFirmwareVersion!!
+                    ) {}
+                }
+            }
+
+            else -> {
+            }
+        }
+    }
+
+
+    private fun checkUpdateFirmware(it: BaseResponse<List<FirmwareInfo>>) {
+        LogUtil.d("ykw", "获取固件版本:$it")
+        when (it.dataState) {
+            DataState.STATE_LOADING -> {
+            }
+
+            DataState.STATE_SUCCESS -> {
+                val firmwareInfoList = it.data as List<FirmwareInfo>
+                for (bean in firmwareInfoList) {
+                    if ((if (ConstantsUtils.IS_TEST) ConstantsUtils.TEST_DOWNLOADBIN else ConstantsUtils.SS_FIRMWARE_NAME) == bean.fileTitle) {
+                        lastFirmwareVersion = bean.fileCode
+                        val downloadPath = bean.filePath
+                        val needDownload =
+                            FileUtils.checkVersion(lastFirmwareVersion, curFirmwareVersion)
+                        LogUtil.d(
+                            "kevin",
+                            "是否需要升级固件:$needDownload ，downloadPath:$downloadPath ,服务器固件版本：$lastFirmwareVersion ,下位机当前固件版本：$curFirmwareVersion"
+                        )
+                        if (needDownload) {
+                            vm.startDownload(
+                                downloadPath,
+                                lastFirmwareVersion!!
+                            ) {}
+                            return
+                        }
+                    }
+                }
+            }
+
+            else -> {
+            }
+        }
+
+    }
+
+    private fun startUpgrade(filePath: String) {
+        LogUtil.i("kevin", "开始固件升级，当前文件路径：$filePath")
+        if (firmDialog != null && firmDialog!!.isShowing) {
+            firmDialog?.dismiss()
+        }
+        firmDialog = ProgressDialog(this)
+        firmDialog?.setDialogTitle(R.string.update_dialog_tip)
+        firmDialog?.setCancelable(false)
+        firmDialog?.show()
+        vm.startUpdate(mDeviceIphysics, filePath)
+    }
+
+    private fun readDeviceInfo() {
+        if (mDeviceIphysics != null) {
+            LogUtil.e("kevin", "------------------读取设备信息同时也握手--------------------")
+            LeakSerialOrderUtils.getDeviceInfoOrder(mDeviceIphysics!!)
+        }
+    }
+
+    private fun showToast(msg: Int) {
+        //在前台才提示
+        if (lifecycle.currentState == Lifecycle.State.RESUMED) {
+            launch(Dispatchers.Main) {
+                NToast.shortToast(this@MainActivity, msg)
+            }
+        }
+    }
+
+    private inner class NetworkConnectChangedReceiver : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action ?: return
+            when (action) {
+                ConstantsUtils.INPUT_SERIALNUM_ACTION -> {
+                    val sn = intent.getStringExtra("serialNum")
+                    LogUtil.d("kevin", "接收广播，序列号:$sn")
+                    if (sn != null && sn.startsWith("806030")) {
+                        vm.sendSerialNo(sn)
+                    }
+                }
+
+                WifiManager.WIFI_STATE_CHANGED_ACTION -> {
+                    // 监听wifi的打开与关闭，与wifi的连接无关
+                    val wifiState = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, 0)
+                    LogUtil.i("network", "wifiState:$wifiState")
+                    when (wifiState) {
+                        WifiManager.WIFI_STATE_DISABLED -> {
+                        }
+
+                        WifiManager.WIFI_STATE_DISABLING -> {
+                        }
+                    }
+                }
+
+                WifiManager.NETWORK_STATE_CHANGED_ACTION -> {
+                    // 监听wifi的连接状态即是否连上了一个有效无线路由
+                    val parcelableExtra: Parcelable? =
+                        intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO)
+                    if (null != parcelableExtra) {
+                        // 获取联网状态的NetWorkInfo对象
+                        val networkInfo = parcelableExtra as NetworkInfo
+                        //获取的State对象则代表着连接成功与否等状态
+                        val state = networkInfo.state
+                        //判断网络是否已经连接
+                        if (state == NetworkInfo.State.CONNECTED) {
+                            LogUtil.i("network", "Network is connected!")
+//                            val manager =
+//                                context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+//                            val info = manager.activeNetworkInfo
+//                            if (null != info && info.isConnected) {
+//
+//                            }
+                        }
+                    }
+                }
+
+                ConnectivityManager.CONNECTIVITY_ACTION -> {
+                    // 监听网络连接，包括wifi和移动数据的打开和关闭,以及连接上可用的连接都会接到监听
+                    val manager =
+                        context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+                    val netInfo = manager.activeNetworkInfo
+                    if (netInfo != null && netInfo.isAvailable) {
+                        if (netInfo.isConnected) {
+                            LogUtil.i("kevin", "网络连接!")
+                            if (needCheckSoftUpdate && deviceNum != null) {
+                                needCheckSoftUpdate = false
+                                vm.checkAppVersionForSS(
+                                    curAppVersion,
+                                    deviceNum!!,
+                                    vm.checkAppUpdateSS
+                                )
+                            }
+                            vm.getTimeZoneTwo()
+//                            initForward()
+                        }
+                    } else {
+                        LogUtil.i("kevin", "网络断开!")
+                    }
+                }
+            }
+
+        }
+    }
+
+    private fun initPermission(mPermissionAllList: ArrayList<String>?) {
+        if (mPermissionAllList == null) return
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val mPermissionList = Tools.requestPermission(this, mPermissionAllList)
+            if (mPermissionList.isNotEmpty()) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    mPermissionList.toArray(arrayOf()),
+                    PERMISSION_REQUEST_CODE
+                )
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                onRequestPermissionsCallback(grantResults)
+            }
+        }
+    }
+
+    private fun onRequestPermissionsCallback(grantResults: IntArray) {
+        var hasPermissionDismiss = false//权限未通过
+        for (result in grantResults) {
+            if (result == -1) {
+                hasPermissionDismiss = true
+            }
+        }
+        if (hasPermissionDismiss) {
+            //如果有权限没有被允许,关闭界面，给出提示
+            LiveEventBus.get(LiveEventBusConstants.REQUEST_PERMISSION_RESULT).post(false)
+            return
+        }
+        // 全部权限通过，可以进行下一步操作。。。
+        LiveEventBus.get(LiveEventBusConstants.REQUEST_PERMISSION_RESULT).post(true)
+    }
+
+    override fun dispatchTouchEvent(motionEvent: MotionEvent): Boolean {
+        if (motionEvent.action == MotionEvent.ACTION_DOWN) {
+            // 获得当前得到焦点的View，一般情况下就是EditText（特殊情况就是轨迹求或者实体案件会移动焦点）
+            val v = currentFocus
+            if (isShouldHideInput(v, motionEvent)) {
+                hideSoftInput(v!!.windowToken)
+            }
+        }
+        return super.dispatchTouchEvent(motionEvent)
+    }
+
+    private fun isShouldHideInput(v: View?, event: MotionEvent): Boolean {
+        if (v != null && v is EditText) {
+            val l = intArrayOf(0, 0)
+            v.getLocationInWindow(l)
+            val left = l[0]
+            val top = l[1]
+            val bottom = top + v.getHeight()
+            val right = (left
+                    + v.getWidth())
+            return !(event.x > left && event.x < right && event.y > top && event.y < bottom)
+        }
+        /**如果焦点不是EditText就忽略掉,
+         * 因为这个发生在视图刚绘制完,
+         * 第一个焦点不在EditView上，和用户用轨迹球选择其他的焦点
+         */
+        return false
+    }
+
+    private fun hideSoftInput(token: IBinder?) {
+        if (token != null) {
+            val im: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            im.hideSoftInputFromWindow(
+                token,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
+        }
+    }
+
+    override fun onBackPressed() {
+        when {
+            currentFragment.onBackPressed() -> {
+            }
+
+            else -> {
+                super.onBackPressed()
+            }
+        }
+    }
+
+    private fun showMessageDialog(
+        msg: String,
+        confirm: Int = R.string.btn_confirm,
+        cancelable: Boolean = true,
+        cancelClickListener: View.OnClickListener? = null,
+        confirmClickListener: View.OnClickListener
+    ) {
+        if (msgDialog != null && msgDialog!!.isShowing) {
+            msgDialog?.dismiss()
+            msgDialog = null
+        }
+        msgDialog = MessageDialog(this)
+        msgDialog?.setCancelable(cancelable)
+        msgDialog?.showMessage(
+            msg = msg,
+            confirm = confirm,
+            mCancelClick = cancelClickListener,
+            mConfirmClick = confirmClickListener
+        )
+    }
+
+    private fun initForward() {
+//        if (ForwardUtils.instance.needInit) {
+//            ForwardUtils.instance.initForward(this) { type, msg ->
+//                runOnUiThread {
+//                    when (type) {
+//                        ForwardUtils.CONNECT -> {
+//                            if (ForwardUtils.instance.client){
+//                                initObserver()
+//                                initData()
+//                                return@runOnUiThread
+//                            }
+//                            showControlDialog("设备已被控制,请在平板端操作！")
+//                        }
+//
+//                        ForwardUtils.DISCONNECT -> {
+//                            if (ForwardUtils.instance.client) {
+//                                return@runOnUiThread
+//                            }
+//                            if (controlledEndDialog != null && controlledEndDialog!!.isShowing) {
+//                                controlledEndDialog?.dismiss()
+//                                controlledEndDialog = null
+//                            }
+//                        }
+//
+//                        ForwardUtils.RECEIVE_DATA -> {
+////                            if (ForwardUtils.instance.client) {
+////                                vm.dealCmdOrder(msg)
+////                                return@runOnUiThread
+////                            }
+//                            LeakSerialOrderUtils.transCommand(mDeviceIphysics, msg)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+    }
+
+    private fun showControlDialog(msg: String) {
+        if (controlledEndDialog != null && controlledEndDialog!!.isShowing) {
+            controlledEndDialog?.dismiss()
+            controlledEndDialog = null
+        }
+        controlledEndDialog = MessageDialog(this)
+        controlledEndDialog?.setCancelable(false)
+        controlledEndDialog?.showMessage(msg = msg)
+    }
+
+    companion object {
+        const val PERMISSION_REQUEST_CODE = 0x11
+    }
+
+    override fun onDestroy() {
+        vm.closeJob()
+        if (isServiceStart) {
+            val intent = Intent(this, FactoryService::class.java)
+            stopService(intent)
+            isServiceStart = false
+        }
+        SoundUtils.instance.release()
+        try {
+            if (registBroadcast) {
+                unregisterReceiver(networkConnectChangedReceiver)
+                registBroadcast = false
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        super.onDestroy()
+    }
+}

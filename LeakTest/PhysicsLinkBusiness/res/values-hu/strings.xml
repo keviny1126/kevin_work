@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Szétkapcsolás:</string>
+    <string name="bluetooth_connecting">Csatlakozás</string>
+    <string name="bluetooth_no_search_device">Nem érzékeli a bluetooth eszközt, amit csatlakoztatni akar. Itt van a közelben, és rendesen kap áramot?</string>
+    <string name="bluetooth_connected">Csatlakoztatva</string>
+    <string name="bluetooth_no_connected">Nincs csatlakoztatva</string>
+    <string name="bluetooth_connect_fail">Sikertelen csatlakozás</string>
+    <string name="bluetooth_connect_lost">Megszakadt kapcsolat</string>
+    <string name="bluetooth_connect_success">A bluetooth eszköz csatlakoztatva</string>
+    <string name="bluetooth_reconnect">Sikertelen bluetooth csatlakoztatás, újra csatlakozás...</string>
+    <string name="bluetooth_scan_start">Szken</string>
+    <string name="bluetooth_scaning">Szkennelés...</string>
+    <string name="bluetooth_scan_end">Szkennelés vége</string>
+</resources>

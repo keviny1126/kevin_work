@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <gradient android:angle="315" android:endColor="#1fef92" android:startColor="#00a65c" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <gradient android:angle="270" android:endColor="#BEBEBE" android:startColor="#EBEBEB" />
+                </shape>
+            </item>
+            <item android:bottom="@dimen/dp_2" android:left="@dimen/dp_2" android:right="@dimen/dp_2" android:top="@dimen/dp_2">
+                <shape android:shape="rectangle">
+                    <gradient android:angle="315" android:endColor="#b7b7b7" android:startColor="#a5a5a5" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <gradient android:angle="270" android:endColor="#BEBEBE" android:startColor="#EBEBEB" />
+                </shape>
+            </item>
+            <item android:bottom="@dimen/dp_2" android:left="@dimen/dp_2" android:right="@dimen/dp_2" android:top="@dimen/dp_2">
+                <shape android:shape="rectangle">
+                    <gradient android:angle="315" android:endColor="#fafafa" android:startColor="#ebebeb" />
+                </shape>
+            </item>
+        </layer-list>
+
+    </item>
+</selector>

@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dp_8">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_pressure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_4"
+        android:background="@drawable/zy_shape_shadow_bg"
+        app:layout_constraintBottom_toTopOf="@+id/cl_show_progress"
+        app:layout_constraintEnd_toStartOf="@+id/cl_show_leakage"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/tv_cur_pre"
+            style="@style/zyCommonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="@string/realtime_pressure"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_pressure_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:background="@drawable/shape_font_bg"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="00.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_25"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/dpv_show_prevalue"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_prevalue"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_prevalue"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_prevalue" />
+
+        <com.power.baseproject.widget.ShowPressureView
+            android:id="@+id/dpv_show_prevalue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            app:dashboard_color="@color/color_727272"
+            app:dashboard_in_color="@color/color_A7A7A7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cur_pre"
+            app:stroke_width_dial="@dimen/dp_4_5"
+            app:text_size_dial="@dimen/sp_6" />
+
+        <TextView
+            android:id="@+id/pressureUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(kpa)"
+            android:textColor="@color/color_313131"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pressure_value"
+            tools:ignore="HardcodedText" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_leakage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_4"
+        android:background="@drawable/zy_shape_shadow_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintEnd_toStartOf="@+id/cl_start_function"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/cl_show_pressure"
+        app:layout_constraintTop_toTopOf="@+id/cl_show_pressure">
+
+        <TextView
+            android:id="@+id/tv_leak_name"
+            style="@style/zyCommonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="@string/leakage"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.FontView
+            android:id="@+id/tv_leakage_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:background="@drawable/shape_font_bg"
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+            android:text="0000"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_25"
+            app:fontType="SS"
+            app:layout_constraintBottom_toBottomOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_leakvalue"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_leakvalue" />
+
+        <com.power.baseproject.widget.ShowPressureView
+            android:id="@+id/dpv_show_leakvalue"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/dp_4"
+            app:dashboard_color="@color/color_727272"
+            app:dashboard_in_color="@color/color_A7A7A7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_leak_name"
+            app:stroke_width_dial="@dimen/dp_4_5"
+            app:text_size_dial="@dimen/sp_6" />
+
+        <TextView
+            android:id="@+id/leakUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(pa)"
+            android:textColor="@color/color_313131"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_leakage_value" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_start_function"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/zy_shape_shadow_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@+id/cl_show_leakage"
+        app:layout_constraintTop_toTopOf="@+id/cl_show_pressure">
+
+        <TextView
+            android:id="@+id/tvTargetTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/target_value_title"
+            android:textColor="@color/color_959595"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintStart_toStartOf="@+id/tv_show_target"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_show_target"
+            style="@style/zyCommonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_9"
+            android:layout_marginTop="@dimen/dp_1"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTargetTitle" />
+
+        <TextView
+            android:id="@+id/tvSerialNoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_8"
+            android:text="@string/serial_number_title"
+            android:textColor="@color/color_959595"
+            android:textSize="@dimen/sp_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_show_serialNo"
+            style="@style/zyCommonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_1"
+            android:layout_marginEnd="@dimen/dp_4"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:textSize="@dimen/sp_13"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvSerialNoTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvSerialNoTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_test_status"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_47"
+            android:layout_marginStart="@dimen/dp_9"
+            android:layout_marginTop="@dimen/dp_7"
+            android:layout_marginEnd="@dimen/dp_9"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:background="@drawable/zy_gray_text_bg_two"
+            android:gravity="center"
+            android:paddingStart="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_4"
+            android:text="----"
+            android:textColor="@color/color_1499D2"
+            android:textSize="@dimen/sp_19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_show_target" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tvStartClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:background="@drawable/zy_selector_common_button"
+            android:minHeight="@dimen/dp_24"
+            android:paddingStart="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvStopClick"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_test_status">
+
+            <ImageView
+                android:id="@+id/iconStart"
+                android:layout_width="@dimen/dp_14"
+                android:layout_height="@dimen/dp_14"
+                android:contentDescription="@null"
+                android:src="@drawable/icon_start_zy_n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/dp_50"
+                android:text="@string/start_up"
+                android:textColor="@color/color_313131"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iconStart"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tvStopClick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_13"
+            android:background="@drawable/zy_selector_common_button"
+            android:minHeight="@dimen/dp_24"
+            android:paddingStart="@dimen/dp_4"
+            android:paddingEnd="@dimen/dp_4"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStartClick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvStartClick"
+            app:layout_constraintTop_toTopOf="@+id/tvStartClick">
+
+            <ImageView
+                android:id="@+id/iconStop"
+                android:layout_width="@dimen/dp_14"
+                android:layout_height="@dimen/dp_14"
+                android:contentDescription="@null"
+                android:src="@drawable/icon_stop_zy_n"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvStop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/dp_50"
+                android:text="@string/stop_it"
+                android:textColor="@color/color_313131"
+                android:textSize="@dimen/sp_11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iconStop"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_show_progress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/zy_shape_shadow_bg"
+        android:padding="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_show_pressure"
+        app:layout_constraintVertical_weight="1">
+
+        <TextView
+            android:id="@+id/tv_progress_name"
+            style="@style/zyCommonTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3"
+            android:text="@string/test_progress"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.power.baseproject.widget.PressureProgressView
+            android:id="@+id/dpv_show_progress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dp_6"
+            app:grid_dotted_color="#B5B5B5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_progress_name"
+            app:line_color="@color/color_0DA96C"
+            app:ppv_grid_color="@color/color_313131"
+            app:product="1"
+            app:section_y="4"
+            app:space_width="@dimen/dp_26"
+            app:title_color="@color/color_959595"
+            app:title_full_color="@color/color_0DA96C"
+            app:title_height="@dimen/dp_17" />
+
+        <LinearLayout
+            android:id="@+id/cl_x_axis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_18"
+            android:layout_marginEnd="@dimen/dp_18"
+            android:background="@color/transparent"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/dp_17"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/dpv_show_progress"
+            app:layout_constraintStart_toStartOf="@+id/dpv_show_progress"
+            app:layout_constraintTop_toTopOf="@+id/dpv_show_progress">
+
+            <TextView
+                android:id="@+id/tv_prepare_time"
+                style="@style/zyTestTitleTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/prepare_time" />
+
+            <TextView
+                android:id="@+id/tv_inflation_time"
+                style="@style/zyTestTitleTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/inflation_time" />
+
+            <TextView
+                android:id="@+id/tv_voltage_stabilization_time"
+                style="@style/zyTestTitleTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/voltage_stabilization_time" />
+
+            <TextView
+                android:id="@+id/tv_leak_time"
+                style="@style/zyTestTitleTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/leak_time" />
+
+            <TextView
+                android:id="@+id/tv_exhaust_time"
+                style="@style/zyTestTitleTextStyle"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLines="2"
+                android:text="@string/exhaust_time" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

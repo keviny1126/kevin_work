@@ -1,0 +1,165 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+//    id 'androidx.navigation.safeargs'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    namespace 'com.newchip.tool.leaktest'
+    //testNamespace gConfig["applicationId"]
+    //buildToolsVersion gConfig["buildToolsVersion"]
+    compileSdkVersion gConfig["compileSdkVersion"]
+
+    defaultConfig {
+        applicationId gConfig["applicationId"]
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+        versionCode gConfig["versionCode"]
+        versionName gConfig["versionName"]
+        ndk {
+            abiFilters "armeabi","armeabi-v7a"
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "product"
+
+    }
+    signingConfigs {
+        release {
+            keyAlias 'newchip' //签名的别名
+            keyPassword 'newchip'//别名密码
+            storeFile file('../leakapp.jks')
+            //签名证书文件
+            storePassword 'newchip'//签名证书密码
+        }
+        debug {
+            keyAlias 'newchip' //签名的别名
+            keyPassword 'newchip'//别名密码
+            storeFile file('../leakapp.jks')
+            //签名证书文件
+            storePassword 'newchip'//签名证书密码
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding = true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    android.applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            //这里修改apk文件名
+            def date = new Date().format("yyyyMMdd")
+            def productName = variant.productFlavors[0].name
+            def productVersion = variant.productFlavors[0].versionName
+            outputFileName = productName + "_V${productVersion}_${date}.apk"
+        }
+    }
+
+    productFlavors{
+        ET30{
+            dimension 'product'
+            matchingFallbacks = ['SmartSafeBase']
+            versionCode gConfig["versionCode"]
+            versionName gConfig["versionName"]
+            applicationId gConfig["applicationId"]
+            sourceSets {
+                main {
+                    manifest.srcFile 'src/ET30/AndroidManifest.xml'
+                }
+            }
+        }
+
+        ELT500{
+            dimension 'product'
+            matchingFallbacks = ['SmartSafeBase']
+            versionCode gConfig["ELT500VersionCode"]
+            versionName gConfig["ELT500VersionName"]
+            applicationId gConfig["ELT500ApplicationId"]
+            sourceSets {
+                main {
+                    manifest.srcFile 'src/ELT500/AndroidManifest.xml'
+                }
+            }
+        }
+
+        ET680{
+            dimension 'product'
+            matchingFallbacks = ['SmartSafeBase']
+            versionCode gConfig["ET500VersionCode"]
+            versionName gConfig["ET500VersionName"]
+            applicationId gConfig["ET500ApplicationId"]
+//            versionCode gConfig["versionCode"]
+//            versionName gConfig["versionName"]
+//            applicationId gConfig["applicationId"]
+            sourceSets {
+                main {
+                    manifest.srcFile 'src/ET680/AndroidManifest.xml'
+                }
+            }
+        }
+
+        EVT501{
+            dimension 'product'
+            matchingFallbacks = ['LaunchBase']
+            versionCode gConfig["EVT501VersionCode"]
+            versionName gConfig["EVT501VersionName"]
+            applicationId gConfig["EVT501ApplicationId"]
+            sourceSets {
+                main {
+                    manifest.srcFile 'src/EVT501/AndroidManifest.xml'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation files('libs/protocol.jar')
+    def dataDependences = rootProject.ext.dataDependencies
+    implementation project(':BaseProject')
+    implementation project(':PhysicsLinkBusiness')
+    implementation dataDependences.kotlin
+    implementation dataDependences.appcompat
+    implementation dataDependences.design
+    implementation dataDependences.constrainlayout
+    implementation dataDependences.livedata
+    implementation dataDependences.viewmodel
+    implementation dataDependences.navigationfragment
+    implementation dataDependences.navigationui
+    implementation dataDependences.gson
+    kapt dataDependences.roomCompiler
+    implementation dataDependences.smartRefresh
+    implementation dataDependences.smartHeader
+    implementation 'com.github.Jlanglang:TreeRecyclerView:1.3.1.1'
+    implementation dataDependences.libaums
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

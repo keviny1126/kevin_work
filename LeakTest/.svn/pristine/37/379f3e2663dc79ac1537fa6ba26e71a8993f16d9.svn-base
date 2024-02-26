@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="msg_wifi_state_no_active">1. Por favor, verifique se o conetor está eletrificado e a inicialização dela está concluída (o indicador de comunicação continua piscando depois de o conector ser ligado, para de piscar e acompanhada com a voz de ¨bip¨significa que a inicialização do conector foi concluído).\n
+                                            2. Se confirmar que a inicialização do conector foi concluída, por favor, tente novamente. \n
+                                            3.  Se o problema continua a surgir, por favor, reinicie o dispositivo ou tente novamente depois de puxar o conector. \n</string>
+
+</resources>

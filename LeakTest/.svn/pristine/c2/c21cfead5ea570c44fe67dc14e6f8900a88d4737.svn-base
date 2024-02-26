@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:splitMotionEvents="false">
+
+    <TextView
+        android:id="@+id/highMode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dp_14"
+        android:layout_marginTop="@dimen/dp_35"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:background="@drawable/selector_main_highmode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lowMode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvHighMode"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_44"
+        android:text="@string/high_mode_test"
+        app:layout_constraintBottom_toBottomOf="@+id/highMode"
+        app:layout_constraintEnd_toEndOf="@+id/highMode"
+        app:layout_constraintStart_toStartOf="@+id/highMode" />
+
+    <TextView
+        android:id="@+id/lowMode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:background="@drawable/selector_main_lowmode"
+        app:layout_constraintBottom_toBottomOf="@+id/highMode"
+        app:layout_constraintEnd_toStartOf="@+id/dataMode"
+        app:layout_constraintStart_toEndOf="@+id/highMode"
+        app:layout_constraintTop_toTopOf="@+id/highMode" />
+
+    <TextView
+        android:id="@+id/tvLowMode"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_44"
+        android:text="@string/low_mode_test"
+        app:layout_constraintBottom_toBottomOf="@+id/lowMode"
+        app:layout_constraintEnd_toEndOf="@+id/lowMode"
+        app:layout_constraintStart_toStartOf="@+id/lowMode" />
+
+
+    <TextView
+        android:id="@+id/dataMode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:background="@drawable/selector_main_data"
+        app:layout_constraintBottom_toBottomOf="@+id/lowMode"
+        app:layout_constraintEnd_toStartOf="@+id/settingMode"
+        app:layout_constraintStart_toEndOf="@+id/lowMode"
+        app:layout_constraintTop_toTopOf="@+id/lowMode" />
+
+    <TextView
+        android:id="@+id/tvDataMode"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_44"
+        android:text="@string/data_management"
+        app:layout_constraintBottom_toBottomOf="@+id/dataMode"
+        app:layout_constraintEnd_toEndOf="@+id/dataMode"
+        app:layout_constraintStart_toStartOf="@+id/dataMode" />
+
+    <TextView
+        android:id="@+id/settingMode"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/dp_14"
+        android:background="@drawable/selector_main_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/dataMode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dataMode"
+        app:layout_constraintTop_toTopOf="@+id/dataMode" />
+
+    <TextView
+        android:id="@+id/tvSettingMode"
+        style="@style/mainTextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_44"
+        android:text="@string/system_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/settingMode"
+        app:layout_constraintEnd_toEndOf="@+id/settingMode"
+        app:layout_constraintStart_toStartOf="@+id/settingMode" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e51c23"
+            android:minHeight="48dp"
+            android:layout_margin="8dp"
+            android:text="发送TCP命令"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_link_tcp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e51c23"
+            android:minHeight="48dp"
+            android:layout_margin="8dp"
+            android:text="连接TCP"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_break_tcp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e51c23"
+            android:minHeight="48dp"
+            android:layout_margin="8dp"
+            android:text="断开TCP"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_link_UDP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e51c23"
+            android:minHeight="48dp"
+            android:layout_margin="8dp"
+            android:text="连接UDP并且发送数据"
+            android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/btn_recive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e51c23"
+            android:minHeight="48dp"
+            android:layout_margin="8dp"
+            android:text="接受数据"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_input_show"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_button"
+        android:minHeight="48dp"
+        android:numeric="integer"
+        android:singleLine="true" />
+
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/et_input_show"
+        android:layout_alignParentTop="true" />
+</RelativeLayout>

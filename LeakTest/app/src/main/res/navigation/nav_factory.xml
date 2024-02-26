@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_factory"
+    app:startDestination="@id/factoryFragment">
+
+    <fragment
+        android:id="@+id/factoryFragment"
+        android:name="com.newchip.tool.leaktest.ui.factory.FactoryFragment"
+        android:label="FactoryFragment"
+        tools:layout="@layout/fragment_factory">
+        <action
+            android:id="@+id/action_factoryFragment_to_agingLeakTestFragment"
+            app:destination="@id/agingLeakTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agingLeakTestFragment"
+        android:name="com.newchip.tool.leaktest.ui.factory.AgingLeakTestFragment"
+        android:label="AgingLeakTestFragment" />
+</navigation>

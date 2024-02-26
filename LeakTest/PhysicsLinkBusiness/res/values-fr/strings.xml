@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Déconnexion:</string>
+    <string name="bluetooth_connecting">Connexion</string>
+    <string name="bluetooth_no_search_device">Non détecté le bluetooth vous souhaitez connecter, il est à proximité ou alimenté normalement?</string>
+    <string name="bluetooth_connected">Connecté</string>
+    <string name="bluetooth_no_connected">Déconnecté</string>
+    <string name="bluetooth_connect_fail">Connexion échouée</string>
+    <string name="bluetooth_connect_lost">Coupure connexion</string>
+    <string name="bluetooth_connect_success">Bluetooth connecté</string>
+    <string name="bluetooth_reconnect">Impossible de connecter bluetooth, connexion à nouveau...</string>
+    <string name="bluetooth_scan_start">Scanner</string>
+    <string name="bluetooth_scaning">Balayage ...</string>
+    <string name="bluetooth_scan_end">Balayage fini</string>
+
+    <string name="msg_usb_connect_state_success">Connexion USB a réussi </string>
+    <string name="msg_usb_disconnect_state_success">USB déconnecté</string>
+    <string name="msg_usb_connect_state_fail">Connexion USB a échoué</string>
+    <string name="msg_usb_disconnect_state_fail">Déconnexion USB a échoué</string>
+    <string name="msg_usb_state_no_device_detected">Aucun dispositif USB est détecté</string>
+    <string name="msg_usb_state_no_permission">Périphérique USB n\'a aucune autorisation </string>
+    <string name="msg_usb_state_no_exclusive_access">Aucune autorisation pour dispositif USB exclusif</string>
+    <string name="msg_usb_state_device_not_support">Dispositif USB n\'est pas supporté</string>
+    <string name="msg_system_error_tips">Désolé, l\'initialisation de l\'application est une erreur. Veuillez essayer la suggestion suivante: \n\n    
+        1、Si vous utilisez un diagnostic USB, débranchez le câble USB, rebranchez-le pendant 5 secondes, puis entrez le diagnostic. \n\n    
+        2、Si le problème ne peut toujours pas être résolu, vérifiez s\'il existe un autre logiciel de diagnostic LAUNCH en cours d\'exécution. S\'il y en a un, arrêtez-le.\n\n 
+        3、Si le problème persiste, redémarrez l\'appareil. \ n\n</string>
+    <string name="msg_wifi_connect_state_fail">La connexion au réseau WiFi a échoué. Vérifiez si le réseau WiFi a été configuré. Si vous confirmez que le problème a été écarté, veuillez réessayer la connexion au réseau WiFi.</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Impossible d\'obtenir l\'adresse IP du réseau WiFi du connecteur. Les causes possibles: \n 
+        1. le réseau WiFi public ne prend pas en charge la diffusion.\n
+        2. Paramètre WiFi du connecteur de diagnostic peut être incorrect.\n
+        Si confirmer le problème a été écarté, veuillez réessayer la connexion au réseau WiFi\n </string>
+    <string name="msg_wifi_state_no_active">1.Vérifiez que le connecteur est sous tension et que l\'initialisation est terminée (le voyant de communication continue de clignoter une fois le connecteur sous tension, le clignotement s\'arrête avec un «clic» pour indiquer que le connecteur est initialisé).\n
+                                            2.Si l\'initialisation du connecteur est terminée, veuillez réessayer.\n
+                                            3. Si le problème persiste, redémarrez l\'appareil ou branchez le connecteur et réessayez.\n</string>
+    <string name="msg_wifi_connect_state_success">La connexion au réseau WiFi a réussi. </string>
+    <string name="msg_serialport_connect_state_fail">Impossible d\'ouvrir le port série.</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Les connecteurs n\'ont pas d\'alimentation, veuillez vérifier si la prise OBD du véhicule avec l\'appareil est connectée.</string>
+    <string name="msg_serialport_connect_state_success">A réussi à ouvrir le port série.</string>
+    <string name="msg_wifi_not_set_service_ip_port">L\'adresse IP ou le port du serveur n\'est pas défini. Définissez d\'abord l\'adresse IP et le port du serveur.</string>
+    <string name="msg_system_dpulms_error_tips">La version du logiciel liée à la connexion Bluetooth est faible. Veuillez accéder au \'Centre de mise à jour \'pour télécharger \'Services du gestionnaire de liaison DPU\'. \n</string>
+
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa">Connecté via assistant WiFi</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range">Non dans la plage</string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Saved</string>
+    <string name="wifi_security_none">None</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">Impossible d\'obtenir l\'adresse IP du réseau ethernet du connecteur.</string>
+    <string name="msg_ethernet_connect_state_fail">La connexion au réseau Ethernet a échoué.</string>
+    <string name="msg_ethernet_connect_state_success">La connexion au réseau Ethernet a réussi.</string>
+
+    <string name="msg_dhcp_start_service_status_success">Le service DHCP a démarré avec succès</string>
+    <string name="msg_dhcp_start_service_status_fail">Échec de démarrage du service DHCP  </string>
+    <string name="msg_dhcp_stop_service_status_success">Succès d\'arrêt du service DHCP </string>
+    <string name="msg_dhcp_stop_service_status_fail">Échec d\'arrêt du service DHCP </string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">L\'attribution d\'adresse IP a échoué</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">L\'attribution d\'adresse IP a réussi. L\'adresse IP est%s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Câble réseau branché</string>
+    <string name="msg_dhcp_cable_status_down">Câble réseau sorti</string>
+</resources>

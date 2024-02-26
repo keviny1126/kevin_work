@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FAFAFA"
+    android:layoutDirection="rtl"
+    android:padding="@dimen/dp_10">
+
+    <!--第一行-->
+    <TextView
+        android:id="@+id/tvWorkpieceNo"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/workpiece_no"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/etWorkpieceNo"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3"
+        android:singleLine="true"
+        android:text="A001"
+        android:textDirection="locale"
+        app:layout_constraintEnd_toStartOf="@+id/etLeakageAlarm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWorkpieceNo"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tvLeakageAlarm"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/leakage_alarm"
+        app:layout_constraintStart_toStartOf="@+id/etLeakageAlarm"
+        app:layout_constraintTop_toTopOf="@+id/tvWorkpieceNo" />
+
+    <TextView
+        android:id="@+id/etLeakageAlarm"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="20"
+        app:layout_constraintBottom_toBottomOf="@+id/etWorkpieceNo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etWorkpieceNo"
+        app:layout_constraintTop_toTopOf="@+id/etWorkpieceNo"
+        tools:ignore="Autofill,LabelFor" />
+
+    <!--第二行-->
+    <TextView
+        android:id="@+id/tvWorkpieceVolume"
+        style="@style/zyConfigTextStyle"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/workpiece_volume"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWorkpieceNo" />
+
+    <TextView
+        android:id="@+id/etWorkpieceVolume"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3"
+        android:text="50.0"
+        app:layout_constraintEnd_toStartOf="@+id/etInflationTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWorkpieceVolume"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tvInflationTimeTitle"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/inflation_time_title"
+        app:layout_constraintStart_toStartOf="@+id/etInflationTime"
+        app:layout_constraintTop_toTopOf="@+id/tvWorkpieceVolume" />
+
+    <TextView
+        android:id="@+id/etInflationTime"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="15"
+        app:layout_constraintBottom_toBottomOf="@+id/etWorkpieceVolume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etWorkpieceVolume"
+        app:layout_constraintTop_toTopOf="@+id/etWorkpieceVolume"
+        tools:ignore="Autofill,LabelFor" />
+
+
+    <!--第三行-->
+    <TextView
+        android:id="@+id/tvTestPressure"
+        style="@style/zyConfigTextStyle"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/test_pressure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWorkpieceVolume" />
+
+    <TextView
+        android:id="@+id/etTestPressure"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3"
+        android:text="30.0"
+        app:layout_constraintEnd_toStartOf="@+id/etStabilizationTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTestPressure"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tvStabilizationTime"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/stabilization_time"
+        app:layout_constraintStart_toStartOf="@+id/etStabilizationTime"
+        app:layout_constraintTop_toTopOf="@+id/tvTestPressure" />
+
+    <TextView
+        android:id="@+id/etStabilizationTime"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/etTestPressure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etTestPressure"
+        app:layout_constraintTop_toTopOf="@+id/etTestPressure"
+        tools:ignore="Autofill,LabelFor" />
+
+    <!--第四行-->
+    <TextView
+        android:id="@+id/tvUpperPressureLimit"
+        style="@style/zyConfigTextStyle"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/upper_pressure_limit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTestPressure" />
+
+    <TextView
+        android:id="@+id/etUpperPressureLimit"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3"
+        android:text="35.0"
+        app:layout_constraintEnd_toStartOf="@+id/etDetectionTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUpperPressureLimit"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tvDetectionTime"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/detection_time"
+        app:layout_constraintStart_toStartOf="@+id/etDetectionTime"
+        app:layout_constraintTop_toTopOf="@+id/tvUpperPressureLimit" />
+
+    <TextView
+        android:id="@+id/etDetectionTime"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="15"
+        app:layout_constraintBottom_toBottomOf="@+id/etUpperPressureLimit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etUpperPressureLimit"
+        app:layout_constraintTop_toTopOf="@+id/etUpperPressureLimit"
+        tools:ignore="Autofill,LabelFor" />
+
+    <!--第五行-->
+    <TextView
+        android:id="@+id/tvLowerPressureLimit"
+        style="@style/zyConfigTextStyle"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/lower_pressure_limit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUpperPressureLimit" />
+
+    <TextView
+        android:id="@+id/etLowerPressureLimit"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_3"
+        android:text="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/etExhaustTimeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLowerPressureLimit"
+        tools:ignore="Autofill,LabelFor" />
+
+    <TextView
+        android:id="@+id/tvExhaustTimeTitle"
+        style="@style/zyConfigTextStyle"
+        android:text="@string/exhaust_time_title"
+        app:layout_constraintStart_toStartOf="@+id/etExhaustTimeTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvLowerPressureLimit" />
+
+    <TextView
+        android:id="@+id/etExhaustTimeTitle"
+        style="@style/zyConfigEdittextStyle"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/etLowerPressureLimit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etLowerPressureLimit"
+        app:layout_constraintTop_toTopOf="@+id/etLowerPressureLimit"
+        tools:ignore="Autofill,LabelFor" />
+</androidx.constraintlayout.widget.ConstraintLayout>

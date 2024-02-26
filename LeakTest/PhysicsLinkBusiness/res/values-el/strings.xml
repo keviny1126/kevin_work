@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Απενεργοποιήστε τη σύνδεση</string>
+    <string name="bluetooth_connecting">Προσπαθεί να συνδεθεί</string>
+    <string name="bluetooth_no_search_device">Δεν εντοπίζει τη συσκευή που προσπαθείτε να συνδεθεί,αν η συσκευή είναι κοντά εδώ ή είναι ενεργοποιημένη κανονικά;</string>
+    <string name="bluetooth_connected">Ενεργοποιημένη</string>
+    <string name="bluetooth_no_connected">Απενεργοποιημένη</string>
+    <string name="bluetooth_connect_fail">Απέτυχε η σύνδεση</string>
+    <string name="bluetooth_connect_lost">χάνεται η σύνδεση</string>
+    <string name="bluetooth_connect_success">Πέτυχε η σύνδεση της συσκευής Bluetooth </string>
+    <string name="bluetooth_reconnect">Απέτυχε η σύνδεση της συσκευής Bluetooth, προσπαθεί να συνδεθεί πάλι...</string>
+    <string name="bluetooth_scan_start">Έναρξη σάρωσης</string>
+    <string name="bluetooth_scaning">Υπό σάρωσης...</string>
+    <string name="bluetooth_scan_end">Τελειώνει η σάρωση</string>
+</resources>

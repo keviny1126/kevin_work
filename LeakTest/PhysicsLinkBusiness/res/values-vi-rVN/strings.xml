@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<string name="bluetooth_close_connected">Ngắt kết nối:</string>
+<string name="bluetooth_connecting">Đang kết nối</string>
+<string name="bluetooth_no_search_device">Không phát hiện ra bluetooth bạn muốn kết nối, nó ở gần hoặc được cấp nguồn bình thường?</string>
+<string name="bluetooth_connected">Đã kết nối</string>
+<string name="bluetooth_no_connected">Không kết nối</string>
+<string name="bluetooth_connect_fail">Kết nối thất bại</string>
+<string name="bluetooth_connect_lost">Đứt kết nối</string>
+<string name="bluetooth_connect_success">Kết nối Bluetooth</string>
+<string name="bluetooth_reconnect">Không thể kết nối bluetooth, kết nối lại ...</string>
+<string name="bluetooth_scan_start">Quét</string>
+<string name="bluetooth_scaning">Đang quét ...</string>
+<string name="bluetooth_scan_end">Kết thúc quét</string>
+
+<string name="msg_usb_connect_state_success">Kết nối USB thành công</string>
+<string name="msg_usb_disconnect_state_success">USB bị ngắt kết nối</string>
+<string name="msg_usb_connect_state_fail">Kết nối USB không thành công</string>
+<string name="msg_usb_disconnect_state_fail">Ngắt kết nối USB không thành công</string>
+<string name="msg_usb_state_no_device_detected">Không phát hiện thấy thiết bị USB</string>
+<string name="msg_usb_state_no_permission">Thiết bị USB không có quyền</string>
+<string name="msg_usb_state_no_exclusive_access">Không có quyền cho thiết bị USB độc quyền</string>
+<string name="msg_usb_state_device_not_support">Thiết bị USB không hỗ trợ</string>
+<string name="msg_system_error_tips">Xin lỗi, Khởi tạo ứng dụng bị lỗi, vui lòng thử đề xuất sau: \ n \ n
+1、Nếu bạn sử dụng chẩn đoán USB, vui lòng rút cáp USB, cắm lại cáp USB trong 5 giây rồi nhập chẩn đoán. \ n \ n
+2、Nếu vẫn không thể giải quyết được sự cố, Kiểm tra xem có phần mềm chẩn đoán LAUNCH nào khác đang chạy không, nếu có, vui lòng dừng chạy chẩn đoán LAUNCH khác \ n \ n
+3、Nếu vẫn không thể giải quyết vấn đề, vui lòng khởi động lại thiết bị. \ n \ n</string>
+<string name="msg_wifi_connect_state_fail">Kết nối mạng WiFi không thành công. Kiểm tra xem mạng WiFi đã được cấu hình chưa. Nếu xác nhận sự cố đã được loại trừ, vui lòng thử lại kết nối mạng WiFi.</string>
+<string name="msg_wifi_connect_state_fail_with_no_ip">Không thể lấy địa chỉ IP của mạng WiFi kết nối. Các nguyên nhân có thể: \ n
+1. Mạng WiFi công cộng không hỗ trợ phát sóng. \ n
+2. Kết nối chẩn đoán Cài đặt WiFi có thể không chính xác. \ n
+Nếu xác nhận sự cố đã được loại trừ, vui lòng thử lại kết nối mạng WiFi \ n</string>
+<string name="msg_wifi_state_no_active">1. Vui lòng kiểm tra xem đầu nối có được cấp nguồn và khởi tạo không! \ n
+                                        2. Vui lòng thử lại nếu trình kết nối đã được khởi tạo! \ n
+                                        3. Vui lòng khởi động lại thiết bị và thử lại nếu lỗi này vẫn còn! \ n</string>
+<string name="msg_wifi_connect_state_success">Kết nối mạng WiFi đã thành công.</string>
+<string name="msg_serialport_connect_state_fail">Không thể mở cổng nối tiếp.</string>
+<string name="msg_serialport_connect_state_fail_with_no_power">Các đầu nối không có nguồn, vui lòng kiểm tra xem ổ cắm xe OBD với thiết bị có được kết nối hay không.</string>
+<string name="msg_serialport_connect_state_success">Thành công để mở cổng nối tiếp.</string>
+<string name="msg_wifi_not_set_service_ip_port">Địa chỉ IP của máy chủ hoặc cổng không được đặt. Đặt địa chỉ IP máy chủ và cổng đầu tiên.</string>
+<string name="msg_system_dpulms_error_tips">Phiên bản phần mềm liên quan đến kết nối Bluetooth thấp. Vui lòng truy cập \' Trung tâm cập nhật \' để tải xuống \'Dịch vụ quản lý liên kết DPU \'. \ n</string>
+
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+<string name="connected_via_wfa">Kết nối qua  WiFi</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+<string name="wifi_not_in_range">Không trong phạm vi</string>
+    <!-- Summary for the remembered network. -->
+<string name="wifi_remembered">Đã lưu</string>
+<string name="wifi_security_none">không ai</string>
+<string name="wifi_security_wep">WEP</string>
+<string name="wifi_security_wpa">WPA PSK</string>
+<string name="wifi_security_wpa2">WPA2 PSK</string>
+<string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+<string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+<string name="msg_ethernet_connect_state_fail_with_no_ip">Không thể lấy địa chỉ IP của mạng ethernet kết nối</string>
+<string name="msg_ethernet_connect_state_fail">Kết nối mạng Ethernet không thành công</string>
+<string name="msg_ethernet_connect_state_success">Kết nối mạng Ethernet đã thành công</string>
+
+<string name="msg_dhcp_start_service_status_success">Dịch vụ DHCP đã khởi động thành công</string>
+<string name="msg_dhcp_start_service_status_fail">Bắt đầu lỗi dịch vụ DHCP</string>
+<string name="msg_dhcp_stop_service_status_success">Dịch vụ DHCP dừng thành công</string>
+<string name="msg_dhcp_stop_service_status_fail">Lỗi dịch vụ DHCP</string>
+<string name="msg_dhcp_service_ip_allocation_status_fail">Không thể gán địa chỉ IP</string>
+<string name="msg_dhcp_service_ip_allocation_status_success">Việc gán địa chỉ IP đã thành công. Địa chỉ IP là% s.</string>
+<string name="msg_dhcp_cable_status_linkup">Cáp mạng cắm vào</string>
+<string name="msg_dhcp_cable_status_down">Cáp mạng rút ra</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

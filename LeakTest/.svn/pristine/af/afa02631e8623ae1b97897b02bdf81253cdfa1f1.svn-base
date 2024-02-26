@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_4"
+    android:background="@drawable/shape_shadow_white_bg"
+    android:layoutDirection="rtl"
+    android:paddingBottom="@dimen/dp_8">
+
+    <TextView
+        android:id="@+id/tv_workpiece_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_11"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="A001"
+        android:textColor="@color/color_777777"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cb_select"
+        android:layout_width="@dimen/dp_22"
+        android:layout_height="@dimen/dp_22"
+        android:layout_margin="@dimen/dp_3"
+        android:background="@drawable/selector_checked_icon"
+        android:button="@null"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_testTime_name"
+        style="@style/saveDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_9"
+        android:text="@string/test_time"
+        app:layout_constraintStart_toStartOf="@+id/tv_workpiece_no"
+        app:layout_constraintTop_toBottomOf="@+id/tv_workpiece_no" />
+
+    <TextView
+        android:id="@+id/tv_testTime_value"
+        style="@style/commonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_testTime_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_testTime_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_testTime_name" />
+
+    <TextView
+        android:id="@+id/tv_line1"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_4_5"
+        android:layout_marginEnd="@dimen/dp_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_testTime_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_testTime_name" />
+
+    <TextView
+        android:id="@+id/tv_testPressure_name"
+        style="@style/saveDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="@string/test_pressure_value"
+        app:layout_constraintStart_toStartOf="@+id/tv_line1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line1" />
+
+    <TextView
+        android:id="@+id/tv_testPressure_value"
+        style="@style/commonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_testPressure_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_testPressure_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_testPressure_name" />
+
+    <TextView
+        android:id="@+id/tv_line2"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_4_5"
+        android:layout_marginEnd="@dimen/dp_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_testPressure_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_testPressure_name" />
+
+    <TextView
+        android:id="@+id/tv_leakageValue_name"
+        style="@style/saveDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="@string/leakage_value"
+        app:layout_constraintStart_toStartOf="@+id/tv_line2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line2" />
+
+    <TextView
+        android:id="@+id/tv_leakageValue_value"
+        style="@style/commonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_leakageValue_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_leakageValue_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_leakageValue_name" />
+
+    <TextView
+        android:id="@+id/tv_line3"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_4_5"
+        android:layout_marginEnd="@dimen/dp_11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_leakageValue_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_leakageValue_name" />
+
+    <TextView
+        android:id="@+id/tv_testResult_name"
+        style="@style/saveDataTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="@string/test_result"
+        app:layout_constraintStart_toStartOf="@+id/tv_line3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line3" />
+
+    <TextView
+        android:id="@+id/tv_testResult_value"
+        style="@style/commonTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/sp_10"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_testResult_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_testResult_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_testResult_name" />
+</androidx.constraintlayout.widget.ConstraintLayout>

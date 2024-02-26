@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_title"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/setting_left_title"
+        android:minHeight="@dimen/title_height"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/dp_6"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toStartOf="@+id/flSettingFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/btn_left_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imgLeft"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_2"
+            android:contentDescription="@null"
+            android:src="@drawable/selector_common_return_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/system_setting"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_11"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_left_back"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nav_view"
+        android:layout_width="@dimen/dp_126"
+        android:layout_height="@dimen/dp_0"
+        android:layout_marginEnd="@dimen/dp_3"
+        android:background="@color/white"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flSettingFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_title">
+
+        <TextView
+            android:id="@+id/tv_language"
+            style="@style/settingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:text="@string/language"
+            app:drawableStartCompat="@drawable/selector_lanuage_icon"
+            app:layout_constraintBottom_toTopOf="@+id/line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/line1"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/shape_dotted_line"
+            app:layout_constraintBottom_toTopOf="@+id/tv_wifi"
+            app:layout_constraintEnd_toEndOf="@+id/tv_language"
+            app:layout_constraintStart_toStartOf="@+id/tv_language"
+            app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+
+        <TextView
+            android:id="@+id/tv_wifi"
+            style="@style/settingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:text="@string/wifi_connect"
+            app:drawableStartCompat="@drawable/selector_wifi_icon"
+            app:layout_constraintBottom_toTopOf="@+id/line2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+        <TextView
+            android:id="@+id/line2"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/shape_dotted_line"
+            app:layout_constraintBottom_toTopOf="@+id/tv_log"
+            app:layout_constraintEnd_toEndOf="@+id/tv_wifi"
+            app:layout_constraintStart_toStartOf="@+id/tv_wifi"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wifi" />
+
+        <TextView
+            android:id="@+id/tv_log"
+            style="@style/settingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:text="@string/log_management"
+            app:drawableStartCompat="@drawable/selector_log_icon"
+            app:layout_constraintBottom_toTopOf="@+id/line3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/shape_dotted_line"
+            app:layout_constraintBottom_toTopOf="@+id/tv_develop"
+            app:layout_constraintEnd_toEndOf="@+id/tv_log"
+            app:layout_constraintStart_toStartOf="@+id/tv_log"
+            app:layout_constraintTop_toBottomOf="@+id/tv_log" />
+
+        <TextView
+            android:id="@+id/tv_develop"
+            style="@style/settingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:text="@string/development_maintenance"
+            app:drawableStartCompat="@drawable/selector_develop_icon"
+            app:layout_constraintBottom_toTopOf="@+id/line4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+        <TextView
+            android:id="@+id/line4"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/shape_dotted_line"
+            app:layout_constraintBottom_toTopOf="@+id/tv_about"
+            app:layout_constraintEnd_toEndOf="@+id/tv_develop"
+            app:layout_constraintStart_toStartOf="@+id/tv_develop"
+            app:layout_constraintTop_toBottomOf="@+id/tv_develop" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            style="@style/settingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_40"
+            android:text="@string/about"
+            app:drawableStartCompat="@drawable/selector_about_icon"
+            app:layout_constraintBottom_toTopOf="@+id/line5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line4" />
+
+        <TextView
+            android:id="@+id/line5"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_2"
+            android:background="@drawable/shape_dotted_line"
+            app:layout_constraintEnd_toEndOf="@+id/tv_about"
+            app:layout_constraintStart_toStartOf="@+id/tv_about"
+            app:layout_constraintTop_toBottomOf="@+id/tv_about" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/flSettingFragment"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nav_view"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

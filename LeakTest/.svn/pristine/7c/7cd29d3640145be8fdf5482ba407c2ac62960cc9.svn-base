@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">قطع الاتصال:</string>
+    <string name="bluetooth_connecting"> الاتصال</string>
+    <string name="bluetooth_no_search_device">لم يتم الكشف عن جهاز البلوتوث الذي تريد الاتصال به، هل هو يكون قريبا منكم أو يعمل بشكل طبيعي؟</string>
+    <string name="bluetooth_connected">تم الاتصال</string>
+    <string name="bluetooth_no_connected">لا يتصل</string>
+    <string name="bluetooth_connect_fail">فشل في الاتصال</string>
+    <string name="bluetooth_connect_lost">انقطع الاتصال</string>
+    <string name="bluetooth_connect_success"> اتصل بالبلوتوث</string>
+    <string name="bluetooth_reconnect">فشل في الاتصال بالبلوتوث، و يرجي الاتصال مرة أخرى ...</string>
+    <string name="bluetooth_scan_start">يمسح</string>
+    <string name="bluetooth_scaning">يتم المسح</string>
+    <string name="bluetooth_scan_end">اكتمل المسح</string>
+    <string name="msg_wifi_state_no_active">1، يرجى التحقق من تشغيل الموصل وتم الانتهاء من التهيئة (يومض مؤشر الاتصال بشكل مستمر بعد تشغيل الموصل، توقف الوامض مع الصوت دي دي للإشارة إلى أن الانتهاء تهيئة الموصل)\1، يرجى التحقق من تشغيل الموصل وتم الانتهاء من التهيئة (يومض مؤشر الاتصال بشكل مستمر بعد تشغيل الموصل، توقف الوامض مع الصوت دي دي للإشارة إلى أن الانتهاء تهيئة الموصل)1، يرجى التحقق من تشغيل الموصل وتم الانتهاء من التهيئة (يومض مؤشر الاتصال بشكل مستمر بعد تشغيل الموصل، توقف الوامض مع الصوت دي دي للإشارة إلى أن الانتهاء تهيئة الموصل).\n
+2، إذا تأكدت من أن الانتهاء تهيئة الموصل، يرجى المحاولة مرة أخرى.\n
+3، إذا كان العطال لا يزال يظهر، يرجى إعادة تشغيل الجهاز أو افصل الموصل وقم بتوصيله والمحاولة مرة أخرى.\n
+</string>
+
+</resources>

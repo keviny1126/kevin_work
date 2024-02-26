@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Rozłączanie:</string>
+    <string name="bluetooth_connecting">Łączę się</string>
+    <string name="bluetooth_no_search_device">Urządzeie, z któym chcesz soie połaczyć nie zostało wykryute. Sprawdź jego status i spóbuj ponownie</string>
+    <string name="bluetooth_connected">Połączono</string>
+    <string name="bluetooth_no_connected">Niepołączone</string>
+    <string name="bluetooth_connect_fail">Połączenie nie powiodło się</string>
+    <string name="bluetooth_connect_lost">Połączenie przerwane</string>
+    <string name="bluetooth_connect_success">Urządzenie bluetooth połączone</string>
+    <string name="bluetooth_reconnect">Połączenie bluetooth nie się udało, łączę ponownie...</string>
+    <string name="bluetooth_scan_start">Rozpocznij skan</string>
+    <string name="bluetooth_scaning">Trwa skanowanie...</string>
+    <string name="bluetooth_scan_end">Kończenie procedury skanowania</string>
+
+    <string name="msg_usb_connect_state_success">Połączenie USB zakończone pomyślnie</string>
+    <string name="msg_usb_disconnect_state_success">Urządzenie USB rozłączone</string>
+    <string name="msg_usb_connect_state_fail">Połączenie USB nie zostało zrealizowane.</string>
+    <string name="msg_usb_disconnect_state_fail">Połączenie nieudane</string>
+    <string name="msg_usb_state_no_device_detected">Urządzenie USB nie zostało wykryte</string>
+    <string name="msg_usb_state_no_permission">Brak dostępu do narzędzia USB</string>
+    <string name="msg_usb_state_no_exclusive_access">Nie można ustawić wyłączności dla tego urządzenia</string>
+    <string name="msg_usb_state_device_not_support">To urządzenie USB nie jest obsługiwane</string>
+    <string name="msg_system_error_tips">Przepraszamy, aplikacja nie mogła zostać uruchomiona. Spróbuj wykonać następujące czynności:\n\n
+    1、Jeżeli wykonujesz diagnostykę USB, odłącz i włącz ponownie po 5 sekundach wtyczkę USB. Następnie spróbuj ponownie uruchomić diagnostykę.\n\n
+    2、Jeśli błędy nadal występują, sprawdź czy nie jest uruchomiony inny proces diagnostyczny. Jeśli tak, zamknij go i sprawdź dostępność aktualizacji systemu. Zainstaluj aktualizacje jeśli dostępne.\n\n
+    3、Jeśli problem nie ustąpił - wykonaj restart całego urządzenia.\n\n</string>
+    <string name="msg_wifi_connect_state_fail">Połączenie WiFi jest obecnie niemożliwe. Sprawdź konfigurację i ustawienia sieci a następnie spróbuj ponownie uruchomić system i ustawić dostęp do sieci</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Nie można uzyskać adresu IP dla wtyczki w wybranej sieci. Możliwe przyczyny to:\n
+    1. Wybrana sieć nie umożliwia przydziału adresu IP dla wtyczki.\n
+    2. Ustawienia i konfiguracja WiFi może być nieaktualna lub błędna .\n
+    Jeśli problem został rozwiązany, ponownie połącz urządzenie z siecią WiFi.\n</string>
+    <string name="msg_wifi_state_no_active">1. Sprawdź czy wtyczka ma dostęp do zasilania i zakończono jej inicjalizację. Wskaźnik połączenia jest widoczny na ekranie .\n
+                                            2. Jeśli wtyczka jest zainicjalizowana, spróbuj podłączyć wtyczkę ponownie \n
+                                            3. Jeśli problem nadal występuje, wykonaj restart urządzenia i spróbuj ponownie po ponownym uruchomieniu. \n</string>
+    <string name="msg_wifi_connect_state_success">Połączenie WiFi zakończone pomyślnie. </string>
+    <string name="msg_serialport_connect_state_fail">Informacje o numerze seryjnym niedostępne.</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Wtyczki diagnostyczne nie mają zasilania. Sprawdź ponownie połączenie.</string>
+    <string name="msg_serialport_connect_state_success">Otwarcie portalu z numerem seryjnym zakończone.</string>
+    <string name="msg_wifi_not_set_service_ip_port">IP serwera lub port nie zostały ustawione</string>
+    <string name="msg_system_dpulms_error_tips">Oprogramowanie Bluetooth wymaga aktualizacji. Sprawdź w \'Centrum Aktualizacji\ i zaktualizuj jeśli konieczne\'.\n</string>
+    <string name="msg_simulator_connect_state_success">Nie udało się utworzyć kopii zapasowej</string>
+    <string name="msg_simulator_connect_state_fail">Kopia zapasowa nie została utworzona</string>
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa">Połączono przez Asystenta WiFi</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range">Sieć poza zasięgiem</string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Zapamiętane sieci</string>
+    <string name="wifi_security_none">Brak</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">Nie udało się uzyskać adresu IP dla urządzenia</string>
+    <string name="msg_ethernet_connect_state_fail">Nie można nawiązać połączenia z siecią</string>
+    <string name="msg_ethernet_connect_state_success">Połączenie typu Ethernet zostało ustalone</string>
+
+    <string name="msg_dhcp_start_service_status_success">Serwer DHCP uruchomiony</string>
+    <string name="msg_dhcp_start_service_status_fail">Uruchomienie serwera DHCP niemożliwe</string>
+    <string name="msg_dhcp_stop_service_status_success">Serwer DHCP został zatrzymany.</string>
+    <string name="msg_dhcp_stop_service_status_fail">Zatrzymanie serwera DHCP nieudane</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">Nadanie adresu IP zakończone niepowodzeniem</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">Nadano adres sieciowy dla urządzenia. Przydzielony adres IP to: %s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Kabel sieciowy podłączono</string>
+    <string name="msg_dhcp_cable_status_down">Kabel sieciowy odłączono</string>
+</resources>

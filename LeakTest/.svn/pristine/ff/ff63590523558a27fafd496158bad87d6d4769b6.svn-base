@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="base_dialog_width" format="float" type="dimen">0.525</item>
+</resources>

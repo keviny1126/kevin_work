@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">切断:</string>
+    <string name="bluetooth_connecting">接続中</string>
+    <string name="bluetooth_no_search_device">接続するbluetoothを検出しません。正常に通電していますか?</string>
+    <string name="bluetooth_connected">接続済み</string>
+    <string name="bluetooth_no_connected">未接続</string>
+    <string name="bluetooth_connect_fail">接続失敗</string>
+    <string name="bluetooth_connect_lost">接続中断</string>
+    <string name="bluetooth_connect_success">Bluetooth接続済み</string>
+    <string name="bluetooth_reconnect">bluetooth接続に失敗し、再接続中…</string>
+    <string name="bluetooth_scan_start">スキャンを開始</string>
+    <string name="bluetooth_scaning">スキャン中…</string>
+    <string name="bluetooth_scan_end">スキャン終了</string>
+    <string name="msg_wifi_state_no_active">1. プラグの通電と初期化を確認してください。（プラグ通電後、インジケーターランプは持続的に点滅します。点滅停止し、ビービーという音が出ると、プラグ初期化が完了しました。）\n
+                                            2. プラグ初期化完了を確認後、改めて試してください。 \n
+                                            3. 問題が依然として解決されていないなら、設備を再起動、あるいは、プラグを再度差し込んでください。 \n</string>
+
+</resources>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="@dimen/dp_125"
+        android:layout_height="@dimen/dp_34"
+        android:layout_marginTop="@dimen/dp_24"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_24"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
+
+    <TextView
+        android:id="@+id/tv_device_type"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/device_type"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line" />
+
+    <TextView
+        android:id="@+id/tv_show_type"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:textColor="@color/color_959595"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_device_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_device_type" />
+
+    <TextView
+        android:id="@+id/tv_line5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_device_type" />
+
+
+    <TextView
+        android:id="@+id/tv_version_cur"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/app_cur_version"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line5" />
+
+    <TextView
+        android:id="@+id/tv_show_appVersion"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:textColor="@color/color_959595"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_version_cur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_version_cur" />
+
+    <TextView
+        android:id="@+id/tv_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_version_cur" />
+
+    <TextView
+        android:id="@+id/tv_firmware_version"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/firmware_cur_version"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line1" />
+
+    <TextView
+        android:id="@+id/tv_show_firmware_version"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:textColor="@color/color_959595"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_firmware_version"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_firmware_version" />
+
+    <TextView
+        android:id="@+id/tv_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_firmware_version" />
+
+    <TextView
+        android:id="@+id/tv_device_num"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/device_sn"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line2" />
+
+    <TextView
+        android:id="@+id/tv_show_num"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:textColor="@color/color_959595"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_device_num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_device_num" />
+
+    <TextView
+        android:id="@+id/tv_line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_device_num" />
+
+    <TextView
+        android:id="@+id/tvDeviceSn"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/device_sn"
+        android:textSize="@dimen/sp_13"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line3" />
+
+    <TextView
+        android:id="@+id/tvShowSn"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:textColor="@color/color_959595"
+        android:textSize="@dimen/sp_13"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDeviceSn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDeviceSn" />
+
+    <TextView
+        android:id="@+id/tv_line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeviceSn" />
+
+    <TextView
+        android:id="@+id/tv_checkApp_update"
+        style="@style/zyCommonTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_17"
+        android:minHeight="@dimen/dp_41"
+        android:text="@string/check_app_update"
+        android:textSize="@dimen/sp_13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_line4" />
+
+    <ImageView
+        android:id="@+id/img_next2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_13"
+        android:contentDescription="@null"
+        android:src="@drawable/zy_icon_more"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_checkApp_update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_checkApp_update" />
+    <TextView
+        android:id="@+id/tvLineEnd"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_checkApp_update" />
+
+    <TextView
+        android:id="@+id/checkFirmwareUpdate"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:background="@drawable/selector_common_item_bg"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_line2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_line1" />
+
+    <TextView
+        android:id="@+id/checkAppUpdate"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:background="@drawable/selector_common_item_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_line4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

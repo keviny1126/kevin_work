@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Desconectando:</string>
+    <string name="bluetooth_connecting">Conectando</string>
+    <string name="bluetooth_no_search_device">No se detecta el  Bluetooth que desea conectar, ¿está suficientemente cerca o encendido con normalidad?</string>
+    <string name="bluetooth_connected">Conectado</string>
+    <string name="bluetooth_no_connected">No conectado</string>
+    <string name="bluetooth_connect_fail">Fallo al conectar</string>
+    <string name="bluetooth_connect_lost">Conexión fallida</string>
+    <string name="bluetooth_connect_success">Bluetooth conectado</string>
+    <string name="bluetooth_reconnect">Fallo al conectar Bluetooth, conectando de nuevo...</string>
+    <string name="bluetooth_scan_start">Escanear</string>
+    <string name="bluetooth_scaning">Escaneando...</string>
+    <string name="bluetooth_scan_end">Fin del escaneado</string>
+
+    <string name="msg_usb_connect_state_success">Conecte USB correctamente </string>
+    <string name="msg_usb_disconnect_state_success">USB desconectado </string>
+    <string name="msg_usb_connect_state_fail">Error de conexión USB </string>
+    <string name="msg_usb_disconnect_state_fail">Error de desconexión USB </string>
+    <string name="msg_usb_state_no_device_detected">No dispositivo USB detectado </string>
+    <string name="msg_usb_state_no_permission">El dispositivo USB no tiene permiso  </string>
+    <string name="msg_usb_state_no_exclusive_access">No permiso para el dispositivo exclusivo de USB</string>
+    <string name="msg_usb_state_device_not_support">El dispositivo USB no se apoya </string>
+    <string name="msg_system_error_tips">Lo sentimos, la inicialización de aplicación es error, por favor, intente la siguiente sugerencia:\n\n
+    1. Si usa un diagnóstico USB, desenchufe el cable USB, vuelva a enchufarlo durante 5 segundos y luego ingrese el diagnóstico.\n\n
+    2. Si aún no puede resolver el problema, verifique si hay otro software de diagnóstico de LAUNCH en ejecución, si hay, deje de ejecutar otro diagnóstico de LAUNCH.\n\n
+    3. Si aún no puede resolver el problema, por favor, reinicie el dispositivo.\n\n</string>
+    <string name="msg_wifi_connect_state_fail">Error de la conexión de la red WiFi.  Compruebe si la red WiFi ha sido configurado. Si confirme que el problema se ha descartado, vuelva a intentar la conexión de la red WiFi.</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Error al obtener la dirección IP de la red WiFi del conector. Las causas posibles:\n
+    1. La red WiFi público no admite la difusión.\n
+    2. El ajuste de WiFi del conector de diagnóstico puede ser incorrecto.\n
+    Si confirme que el problema se ha descartado, vuelva a intentar la conexión de la red WiFi.\n</string>
+    <string name="msg_wifi_state_no_active">1. Compruebe si el conector está energizado y la inicialización se ha completado. (el indicador de comunicación continúe parpadeando después de que el conector esté energizado y la inicialización del conector se complete cuando el parpadeo se detenga con pitidos.) \n
+                                            2. Si el conector está inicializado, por favor, intente de nuevo.\n
+                                            3. Si el problema persiste, reinicie el dispositivo o vuelva a intentarlo después de desconectar el conector y volver a conectarlo. \n</string>
+    <string name="msg_wifi_connect_state_success">Conexión de la red WiFi con éxito.  </string>
+    <string name="msg_serialport_connect_state_fail">Error al abrir el puerto serial.</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Los conectores no tienen alimentación, verifique si la toma OBD del vehículo con el dispositivo está conectada.</string>
+    <string name="msg_serialport_connect_state_success">Se realizó correctamente para abrir abrir el puerto serial.</string>
+    <string name="msg_wifi_not_set_service_ip_port">La dirección IP y el puerto del servidor no está establecido. Establece la dirección IP y el puerto del servidor primero.</string>
+    <string name="msg_system_dpulms_error_tips">La versión del software relacionada con la conexión Bluetooth es baja. Por favor, vaya a \'Centro de Actualizaciones\'para descargar\'Servicios de Administrador de Enlaces DPU.\n</string>
+
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa">Conectado a través de WiFi assistant</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range">No en rango </string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Saved</string>
+    <string name="wifi_security_none">None</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">Error al obtener la dirección IP de la red Ethernet del conector.</string>
+    <string name="msg_ethernet_connect_state_fail">Error de la conexión de la red ethernet</string>
+    <string name="msg_ethernet_connect_state_success">Se realizó correctamente la conexión de la red ethernet.</string>
+
+    <string name="msg_dhcp_start_service_status_success">El servicio DHCP iniciado correctamente </string>
+    <string name="msg_dhcp_start_service_status_fail">Iniciar el fallo de servicio DHCP</string>
+    <string name="msg_dhcp_stop_service_status_success">Éxito de parada del servicio DHCP  </string>
+    <string name="msg_dhcp_stop_service_status_fail">Fallo de parada del servicio DHCP</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">Error de asignación de dirección IP </string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">Asignación de dirección IP con éxito. La dirección IP es %s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Cable de la red enchufado</string>
+    <string name="msg_dhcp_cable_status_down">Cable de la red extraído </string>
+</resources>

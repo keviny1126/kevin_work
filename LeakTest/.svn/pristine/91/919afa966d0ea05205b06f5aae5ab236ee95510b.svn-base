@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.newchip.tool.leaktest.ui.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_lowVoltageModeFragment"
+            app:destination="@id/lowVoltageModeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dataFragment"
+            app:destination="@id/dataFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dataFragmentNew"
+            app:destination="@id/dataFragmentNew" />
+    </fragment>
+    <fragment
+        android:id="@+id/lowVoltageModeFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.LowVoltageModeFragment"
+        android:label="LowVoltageModeFragment"
+        tools:layout="@layout/fragment_low_voltage_mode">
+        <action
+            android:id="@+id/action_lowVoltageModeFragment_to_lowVoltageConfigFragment"
+            app:destination="@id/lowVoltageConfigFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataFragment"
+        android:name="com.newchip.tool.leaktest.ui.data.DataFragment"
+        android:label="DataFragment"
+        tools:layout="@layout/fragment_data">
+        <action
+            android:id="@+id/action_dataFragment_to_dataDetailFragment"
+            app:destination="@id/dataDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.newchip.tool.leaktest.ui.setting.fragment.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/lowVoltageConfigFragment"
+        android:name="com.newchip.tool.leaktest.ui.detection.LowVoltageConfigFragment"
+        android:label="LowVoltageConfigFragment"
+        tools:layout="@layout/fragment_config" />
+    <fragment
+        android:id="@+id/dataDetailFragment"
+        android:name="com.newchip.tool.leaktest.ui.data.DataDetailFragment"
+        android:label="DataDetailFragment"
+        tools:layout="@layout/fragment_data_detail" >
+        <argument
+            android:name="testData"
+            app:argType="com.power.baseproject.db.entity.TestData" />
+    </fragment>
+    <fragment
+        android:id="@+id/dataFragmentNew"
+        android:name="com.newchip.tool.leaktest.ui.data.DataFragmentNew"
+        android:label="DataFragmentNew"
+        tools:layout="@layout/fragment_data_new"/>
+</navigation>

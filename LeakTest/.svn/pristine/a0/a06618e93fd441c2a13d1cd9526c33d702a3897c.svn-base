@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FontView">
+        <attr name="fontType" format="enum">
+            <enum name="SS" value="1" />
+            <enum name="XK" value="2" />
+            <enum name="ZY" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <!-- 仪表盘自定义属性 -->
+    <attr name="color_dial_lower" format="color" />
+    <attr name="color_dial_middle" format="color" />
+    <attr name="color_dial_high" format="color" />
+    <attr name="text_size_dial" format="dimension" />
+    <attr name="stroke_width_dial" format="dimension" />
+    <attr name="radius_circle_dial" format="dimension" />
+    <attr name="text_title_dial" format="string" />
+    <attr name="text_title_size" format="dimension" />
+    <attr name="text_title_color" format="color" />
+    <attr name="text_size_value" format="dimension" />
+    <attr name="animator_play_time" format="integer" />
+
+    <declare-styleable name="ClockView">
+        <attr name="color_dial_lower" />
+        <attr name="color_dial_middle" />
+        <attr name="color_dial_high" />
+        <attr name="text_size_dial" />
+        <attr name="stroke_width_dial" />
+        <attr name="radius_circle_dial" />
+        <attr name="text_title_dial" />
+        <attr name="text_title_size" />
+        <attr name="text_title_color" />
+        <attr name="text_size_value" />
+        <attr name="animator_play_time" />
+    </declare-styleable>
+    <declare-styleable name="WaveView">
+        <!--最大值 默认为20，数据为-20 ~ 20-->
+        <attr name="max_value" format="integer" />
+        <!--波形图折线单位宽度，通过修改该参数，控制横坐标的单位-->
+        <attr name="wave_line_width" format="integer" />
+        <!--波形图折线的线宽-->
+        <attr name="wave_line_stroke_width" format="integer" />
+        <!--波形图折线的颜色-->
+        <attr name="wave_line_color" format="string" />
+        <!--背景网格图的颜色-->
+        <attr name="grid_line_color" format="string" />
+        <!--背景颜色，默认为黑-->
+        <attr name="wave_background" format="string" />
+        <!--背景网格是否可见-->
+        <attr name="grid_visible" format="boolean" />
+        <!--波形图绘制模式，常规和循环-->
+        <attr name="draw_mode" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="loop" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="DashboardPressureView">
+        <attr name="color_dial_lower" />
+        <attr name="color_dial_middle" />
+        <attr name="color_dial_high" />
+        <attr name="text_size_dial" />
+        <attr name="stroke_width_dial" />
+        <attr name="radius_circle_dial" />
+        <attr name="text_title_dial" />
+        <attr name="text_title_size" />
+        <attr name="text_title_color" />
+        <attr name="text_size_value" />
+        <attr name="animator_play_time" />
+        <attr name="color_scale" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ScaleView">
+        <attr name="scale_color" format="color" />
+        <attr name="scale_width" format="float" />
+        <attr name="scale_height" format="float" />
+        <attr name="low_color" format="color" />
+        <attr name="mid_color" format="color" />
+        <attr name="high_color" format="color" />
+        <attr name="text_size" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="CurProgressView">
+        <attr name="y_max_value" format="float" />
+        <attr name="grid_color" format="color" />
+        <attr name="text_size_y" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="ProgressBottomView"></declare-styleable>
+    <declare-styleable name="ShowPressureView">
+        <attr name="dashboard_color" format="color" />
+        <attr name="dashboard_in_color" format="color" />
+        <attr name="text_size_dial" />
+        <attr name="stroke_width_dial" />
+    </declare-styleable>
+    <declare-styleable name="PressureProgressView">
+        <attr name="title_height" format="dimension" />
+        <attr name="space_width" format="dimension" />
+        <attr name="text_size_axis" format="dimension" />
+        <attr name="section_y" format="integer" />
+        <attr name="title_color" format="color" />
+        <attr name="title_full_color" format="color" />
+        <attr name="ppv_grid_color" format="color" />
+        <attr name="grid_dotted_color" format="color" />
+        <attr name="line_color" format="color" />
+        <attr name="product" format="integer"/>
+    </declare-styleable>
+</resources>

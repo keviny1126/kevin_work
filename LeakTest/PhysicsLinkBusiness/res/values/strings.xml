@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Disconnecting:</string>
+    <string name="bluetooth_connecting">Connecting</string>
+    <string name="bluetooth_no_search_device">Not detected the bluetooth you want to connect, is it nearby or powered normally?</string>
+    <string name="bluetooth_connected">Connected</string>
+    <string name="bluetooth_no_connected">Not connected</string>
+    <string name="bluetooth_connect_fail">Connect failed</string>
+    <string name="bluetooth_connect_lost">Connection break</string>
+    <string name="bluetooth_connect_success">Bluetooth connected</string>
+    <string name="bluetooth_reconnect">Failed to connect bluetooth, connecting again...</string>
+    <string name="bluetooth_scan_start">Scan</string>
+    <string name="bluetooth_scaning">Scanning ...</string>
+    <string name="bluetooth_scan_end">Scanning end</string>
+
+    <string name="msg_usb_connect_state_success">USB connect successfully </string>
+    <string name="msg_usb_disconnect_state_success">USB disconnected</string>
+    <string name="msg_usb_connect_state_fail">USB connect failed</string>
+    <string name="msg_usb_disconnect_state_fail">USB  disconnection failed</string>
+    <string name="msg_usb_state_no_device_detected">No USB device detected</string>
+    <string name="msg_usb_state_no_permission">USB device have no permissions </string>
+    <string name="msg_usb_state_no_exclusive_access">No permission for exclusive USB device</string>
+    <string name="msg_usb_state_device_not_support">USB device is not support</string>
+    <string name="msg_system_error_tips">Sorry,Application initialization is error, please try the following suggestion:\n\n
+    1、If you use a USB diagnosis, please unplug the USB cable, plug in the USB cable again for 5 seconds Then enter the diagnosis.\n\n
+    2、If still cannot solve the problem,Check to see if there is other LAUNCH diagnose software running, if there is please stop run other LAUNCH diagnose\n\n
+    3、If still cannot solve the problem,Please reboot device.\n\n</string>
+    <string name="msg_wifi_connect_state_fail">WiFi network connection failed. Check whether WiFi network has been configured.If confirm the problem has been ruled out, please retry WiFi network connection.</string>
+    <string name="msg_wifi_connect_state_fail_for_wifi_priority">1. Please check if the connector is energized and the initialization is completed (The communication indicator keeps flashing after the connector is energized and the initialization of the connector is completed when the flashing stops with beeps).\n
+                                            2.If the connector is initialized, please try again. \n
+                                            3.If still cannot solve the problem,Please check whether the same WiFi hotspot has been configured in the system WiFi Settings.If the configuration of the WiFi hotspot already exists and needs to be deleted, the application has the right to realize automatic connection.This operation only needs to be performed once\n
+                                            4.If confirm the problem has been ruled out, please retry WiFi network connection.\n</string>
+    <string name="msg_wifi_connect_state_fail_with_no_ip">Failed to obtain connector WiFi network IP address. The possible causes:\n
+    1. Public WiFi network does not support broadcast.\n
+    2. Diagnostic connector WiFi setting may be incorrect.\n
+    If confirm the problem has been ruled out, please retry WiFi network connection\n</string>
+    <string name="msg_wifi_state_no_active">1. Please check if the connector is energized and the initialization is completed (The communication indicator keeps flashing after the connector is energized and the initialization of the connector is completed when the flashing stops with beeps).\n
+                                            2. If the connector is initialized, please try again. \n
+                                            3.  If the problem still exists, please restart the device or try again after unplugging the connector and plugging it back in. \n</string>
+    <string name="msg_wifi_connect_state_success">WiFi network connection succeeded. </string>
+    <string name="msg_serialport_connect_state_fail">Failed to open the serial port.</string>
+    <string name="msg_serialport_connect_state_fail_with_no_power">Connectors have no power, please check whether the vehicle OBD socket with the device is connected.</string>
+    <string name="msg_serialport_connect_state_success">Succeeded to open the serial port.</string>
+    <string name="msg_wifi_not_set_service_ip_port">The server IP address or port is not set. Set the server IP address and port first.</string>
+    <string name="msg_system_dpulms_error_tips">The software version related to Bluetooth connection is low. Please go to \'Update Center\' to download \'DPU Link Manager Services\'.\n</string>
+    <string name="msg_simulator_connect_state_success">The simulator device was created successfully</string>
+    <string name="msg_simulator_connect_state_fail">The simulator device was created failed</string>
+
+    <!-- Status message of Wi-Fi when it is connected by a Wi-Fi assistant application. [CHAR LIMIT=NONE] -->
+    <string name="connected_via_wfa">Connected via WiFi assistant</string>
+    <!-- Summary for the remembered network but currently not in range. -->
+    <string name="wifi_not_in_range">Not in range</string>
+    <!-- Summary for the remembered network. -->
+    <string name="wifi_remembered">Saved</string>
+    <string name="wifi_security_none">None</string>
+    <string name="wifi_security_wep">WEP</string>
+    <string name="wifi_security_wpa">WPA PSK</string>
+    <string name="wifi_security_wpa2">WPA2 PSK</string>
+    <string name="wifi_security_wpa_wpa2">WPA/WPA2 PSK</string>
+    <string name="wifi_security_psk_generic">@string/wifi_security_wpa_wpa2</string>
+    <string name="msg_ethernet_connect_state_fail_with_no_ip">Failed to obtain connector ethernet network IP address</string>
+    <string name="msg_ethernet_connect_state_fail">Ethernet network connection failed</string>
+    <string name="msg_ethernet_connect_state_success">Ethernet network connection succeeded</string>
+
+    <string name="msg_dhcp_start_service_status_success">The DHCP service started successfully</string>
+    <string name="msg_dhcp_start_service_status_fail">Start the DHCP service failure</string>
+    <string name="msg_dhcp_stop_service_status_success">The DHCP service stop success</string>
+    <string name="msg_dhcp_stop_service_status_fail">The DHCP service stop failure</string>
+    <string name="msg_dhcp_service_ip_allocation_status_fail">IP address assignment failed</string>
+    <string name="msg_dhcp_service_ip_allocation_status_success">IP address assignment succeeded. IP address is %s.</string>
+    <string name="msg_dhcp_cable_status_linkup">Network cable plugged in</string>
+    <string name="msg_dhcp_cable_status_down">Network cable pulled out</string>
+</resources>

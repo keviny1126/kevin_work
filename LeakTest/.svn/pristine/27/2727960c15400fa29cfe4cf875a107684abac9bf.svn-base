@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE"
+    android:layoutDirection="rtl">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvDivider"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_language"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/language"
+            app:drawableStartCompat="@drawable/zy_icon_language_n"
+            app:layout_constraintBottom_toTopOf="@+id/tv_wifi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_wifi"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/wifi_connect"
+            app:drawableStartCompat="@drawable/zy_icon_wifi_n"
+            app:layout_constraintBottom_toTopOf="@+id/tv_log"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_language" />
+
+
+        <TextView
+            android:id="@+id/tv_log"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/log_management"
+            app:drawableStartCompat="@drawable/zy_icon_log_n"
+            app:layout_constraintBottom_toTopOf="@+id/tvUnit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wifi" />
+
+        <TextView
+            android:id="@+id/tvUnit"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/setting_unit"
+            app:drawableStartCompat="@drawable/zy_icon_unit_n"
+            app:layout_constraintBottom_toTopOf="@+id/tv_develop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_log" />
+
+        <TextView
+            android:id="@+id/tv_develop"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/development_maintenance"
+            app:drawableStartCompat="@drawable/zy_icon_develop_n"
+            app:layout_constraintBottom_toTopOf="@+id/tv_about"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_log" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            style="@style/zySettingLeftTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/dp_11"
+            android:minHeight="@dimen/dp_46"
+            android:paddingStart="@dimen/dp_8"
+            android:text="@string/about"
+            app:drawableStartCompat="@drawable/zy_icon_about_n"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_develop" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvDivider"
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="0dp"
+        android:background="@color/color_B5B5B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/flSettingFragment"
+        app:layout_constraintStart_toEndOf="@+id/nav_view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/flSettingFragment"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@+id/tvDivider"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

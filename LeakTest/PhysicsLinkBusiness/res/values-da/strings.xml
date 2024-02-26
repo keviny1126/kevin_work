@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Frakobler:</string>
+    <string name="bluetooth_connecting">Forbinder</string>
+    <string name="bluetooth_no_search_device">Kunne ikke opfange den bluetooth du ønsker at forbinde med, er det nærliggende eller driver det normalt?</string>
+    <string name="bluetooth_connected">Forbundet</string>
+    <string name="bluetooth_no_connected">Ikke forbundet</string>
+    <string name="bluetooth_connect_fail">Forbind mislykkedes</string>
+    <string name="bluetooth_connect_lost">Forbindelsen afbryder</string>
+    <string name="bluetooth_connect_success">Bluetooth er forbundet</string>
+    <string name="bluetooth_reconnect">Det mislykkedes til at forbinde bluetooth, forbinder igen...</string>
+    <string name="bluetooth_scan_start">Begynd at skandere</string>
+    <string name="bluetooth_scaning">Skander...</string>
+    <string name="bluetooth_scan_end">Slut med at skandere</string>
+</resources>

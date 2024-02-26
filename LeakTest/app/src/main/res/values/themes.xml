@@ -1,0 +1,24 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.LeakTestApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/img_background</item>
+        <item name="editTextStyle">@style/EditTextStyle.Alignment</item>
+        <!--        <item name="android:windowBackground">@color/transparent</item>-->
+    </style>
+
+    <style name="Transparent" parent="Theme.LeakTestApp">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="EditTextStyle.Alignment" parent="@android:style/Widget.EditText">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textDirection">locale</item>
+    </style>
+</resources>

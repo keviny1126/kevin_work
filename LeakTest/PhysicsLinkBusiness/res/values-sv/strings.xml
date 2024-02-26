@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 物理业务层使用文字 起名时前半部分带bluetooth为蓝牙模块使用 -->
+    <string name="bluetooth_close_connected">Koppla ifrån:</string>
+    <string name="bluetooth_connecting">Ansluter</string>
+    <string name="bluetooth_no_search_device">Kan inte upptäcka bluetooth du vill ansluta, är den i närheten eller drivs den normalt?</string>
+    <string name="bluetooth_connected">Ansluten</string>
+    <string name="bluetooth_no_connected">Inte ansluten</string>
+    <string name="bluetooth_connect_fail">Anslutning misslyckades</string>
+    <string name="bluetooth_connect_lost">Anslutnings avbrott</string>
+    <string name="bluetooth_connect_success">Bluetooth ansluten</string>
+    <string name="bluetooth_reconnect">Det gick inte att ansluta bluetooth, ansluter igen ...</string>
+    <string name="bluetooth_scan_start">Scan</string>
+    <string name="bluetooth_scaning">Scanna...</string>
+    <string name="bluetooth_scan_end">Scanning slut</string>
+</resources>
