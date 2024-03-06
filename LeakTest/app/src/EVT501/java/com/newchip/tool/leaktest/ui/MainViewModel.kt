@@ -69,6 +69,7 @@ class MainViewModel(val repo: MainRepo) : BaseViewModel() {
     val leakDataLivedata = MutableLiveData<LeakDataBean>()//实时气压值回调
     val testSwitchLivedata = MutableLiveData<TestOnOrOffResult>()//测试启停结果回调
     val exhaustLivedata = MutableLiveData<TestOnOrOffResult>()//测试启停结果回调
+    val reInflationLivedata = MutableLiveData<Boolean>()//测试启停结果回调
     var firmwareLastVersion = StateLiveData<List<FirmwareInfo>>()//服务器固件版本回调
     var appLastVersion = StateLiveData<List<FirmwareInfo>>()//服务器固件版本回调
     var downloadLiveData = StateLiveData<String>()//下载固件回调
@@ -207,6 +208,14 @@ class MainViewModel(val repo: MainRepo) : BaseViewModel() {
                     exhaustLivedata.postValue(bean.data)
                 }
             }
+            "04" ->{
+                //补气指令
+                val bean =
+                    AnalysisTools.analysisReInflationResult(receiveData.receiveBuffer)
+                if (bean.result) {
+                    reInflationLivedata.postValue(bean.data)
+                }
+            }
 
             "10" -> {
                 val bean = AnalysisTools.analysisLeakData(receiveData.receiveBuffer)
@@ -328,6 +337,11 @@ class MainViewModel(val repo: MainRepo) : BaseViewModel() {
         val mCurrentDevice = DeviceConnectUtils.instance.getCurrentDevice() ?: return
         LeakSerialOrderUtils.sendExhaustOrder(mCurrentDevice, data)
     }
+    fun sendReInflationOrder() {
+        val mCurrentDevice = DeviceConnectUtils.instance.getCurrentDevice() ?: return
+        LeakSerialOrderUtils.sendReInflationOrder(mCurrentDevice)
+    }
+
 
     fun getConfigData(): ConfigLeakInfoBean {
         val json = EasyPreferences.instance[ConstantsUtils.LEAK_CONFIG_KEY]

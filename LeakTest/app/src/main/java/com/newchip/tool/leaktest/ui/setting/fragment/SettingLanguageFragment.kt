@@ -95,7 +95,7 @@ class SettingLanguageFragment : BaseAppFragment<FragmentLanguageBinding>() {
             else -> DeviceUtils.changeSystemLanguage(Locale.SIMPLIFIED_CHINESE)
         }
         ActivityPackageManager.instance.finishAllActivity()
-        CmdControl.restartAppCommand()
+        CmdControl.restartAppCommand(mContext)
         activity?.finish()
     }
 

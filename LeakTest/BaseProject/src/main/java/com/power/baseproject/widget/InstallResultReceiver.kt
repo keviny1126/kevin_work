@@ -46,12 +46,12 @@ class InstallResultReceiver : BroadcastReceiver() {
         }
         if (action.equals(Intent.ACTION_BOOT_COMPLETED)) {
             d(TAG, "安装反馈 ACTION_BOOT_COMPLETED")
-            CmdControl.restartAppCommand()
+            CmdControl.restartAppCommand(context)
         }
 
         if (action.equals(Intent.ACTION_PACKAGE_REPLACED)) {
             d(TAG, "安装反馈 ACTION_PACKAGE_REPLACED")
-            CmdControl.restartAppCommand()
+            CmdControl.restartAppCommand(context)
         }
     }
 

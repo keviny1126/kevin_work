@@ -74,13 +74,14 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
     private var lowStabilizationValueLimit = 0.2f
     private var initLeakValue = "0000"
     private var initPressValue = "00.00"
+    private var needReInflation = false
 
     override fun initView() {
         setTitle(R.string.low_mode)
         refreshBtnStatusUI(false, showProgress = false)
         initClick()
         needPrintLog = EasyPreferences.instance[ConstantsUtils.LOG_SHOW_FLAG, false]
-        val factoryFlag = EasyPreferences.instance[ConstantsUtils.FACTORY_SERVICE_START_FLAG,true]
+        val factoryFlag = EasyPreferences.instance[ConstantsUtils.FACTORY_SERVICE_START_FLAG, true]
         if (factoryFlag) {
             if (Tools.iServiceRunning(mContext, FactoryService::class.java.simpleName)) {
                 LiveEventBus.get(LiveEventBusConstants.CLOSE_FACTORY_TOOL).post(3)
@@ -210,7 +211,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         mVb.tvStopClick clicks {
             showMessageDialog(getString(R.string.whether_stop_test), mCancelClick = {}) {
                 testResult = "3"//getString(R.string.active_stop_test)
-                //mVb.tvTestStatus.text = getString(R.string.active_stop_test)
                 setTestStatus(R.string.active_stop_test)
                 sendCloseTest()
             }
@@ -262,23 +262,22 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
             }
             when (it) {
                 "01" -> {
-                    //mVb.tvTestStatus.text = getString(R.string.preparing)
                     setTestStatus(R.string.preparing)
                 }
+
                 "02" -> {
-                    //mVb.tvTestStatus.text = getString(R.string.inflating)
                     setTestStatus(R.string.inflating)
                 }
+
                 "03" -> {
-                    //mVb.tvTestStatus.text = getString(R.string.under_voltage_stabilization)
                     setTestStatus(R.string.under_voltage_stabilization)
                 }
+
                 "04" -> {
-                    //mVb.tvTestStatus.text = getString(R.string.testing)
                     setTestStatus(R.string.testing)
                 }
+
                 "05" -> {
-                    //mVb.tvTestStatus.text = getString(R.string.exhausting)
                     setTestStatus(R.string.exhausting)
                 }
             }
@@ -321,14 +320,15 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
             val curPa = curPressUnit.convertUnit(averageValue.toFloat(), ConstantsUtils.PA)
             tempPaList.clear()
             actualValue = curPa
+            val valVeState = it.valVeState
             virtualValue =
-                if (DEBUG) curPa else getVirtualValue(curPa, it.currentState, it.valVeState)
+                if (DEBUG) curPa else getVirtualValue(curPa, it.currentState, valVeState)
 
             val curTime = (it.currentTimeCount * TIME_INTERVAL).toFloat() / 1000
             LogUtil.d(
                 "kevin",
                 "实时气压值回调 状态:${it.currentState} ---当前气压:${averageValue}--虚拟气压：${virtualValue}---当前时间:$curTime" +
-                        "------it.currentTimeCount：${it.currentTimeCount} --- 充气状态：${it.valVeState} ==tempCurMaxPa:${tempCurMaxPa}"
+                        "------it.currentTimeCount：${it.currentTimeCount} --- 充气状态：${valVeState} ==tempCurMaxPa:${tempCurMaxPa}"
             )
             when (it.currentState) {
                 "01" -> {
@@ -368,7 +368,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
                 }
                 "02" -> {
                     //充气状态
-                    leakDataInflateState(curTime, virtualValue)
+                    leakDataInflateState(curTime, virtualValue, valVeState)
                 }
                 "03" -> {
                     //稳定状态
@@ -398,6 +398,9 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
                 qualifiedFinish(curTime, exhaustValue)
             }
         }
+        vm.reInflationLivedata.observe(this) {
+            LogUtil.i("kevin", "---------补气指令发送结果:$it")
+        }
     }
 
     override fun lazyLoadData() {
@@ -406,7 +409,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
     private fun qualifiedFinish(curTime: Float, curPa: Float) {
         if (isTesting) {
             isTesting = false
-            //mVb.tvTestStatus.text = getString(R.string.qualified)
             setTestStatus(R.string.qualified)
 
             tempDataList.add(PointerTempDate(curTime, getString(R.string.finish), curPa, 0f))
@@ -440,7 +442,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         }
     }
 
-    private fun leakDataInflateState(curTime: Float, curPa: Float) {
+    private fun leakDataInflateState(curTime: Float, curPa: Float, valVeState: String) {
         if (curTime <= readyTime + configInfo.inflationTime) {
             mVb.dpvShowProgress.setPointData(curTime, curPa)
 
@@ -458,8 +460,13 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
                 if (configInfo.inflationTime > 100 && curPa == configInfo.testPressure) 10 else 2
 
             savePointer(curTime, curPa, getString(R.string.inflate))
+            if (!needReInflation && valVeState == "80" && checkReInflationValue(actualValue) && (curTime <= readyTime + configInfo.inflationTime - 3)) {
+                //需要补气
+                LogUtil.e("kevin","<====================需要补气，发送补气指令=================>")
+                needReInflation = true
+                vm.sendReInflationOrder()
+            }
         }
-
 
         when {
             configInfo.testPressure >= lowPressLimit -> {
@@ -482,7 +489,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
     private fun errorInflation() {
         context?.isFastTimer {
             if (isTesting) {
-                //mVb.tvTestStatus.text = getString(R.string.unqualified)
                 setTestStatus(R.string.unqualified)
 
                 mVb.dpvShowPrevalue.setDashboardColor(
@@ -535,7 +541,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         ) {
             context?.isFastTimer {
                 if (isTesting) {
-                    //mVb.tvTestStatus.text = getString(R.string.unqualified)
                     setTestStatus(R.string.unqualified)
                     mVb.dpvShowPrevalue.setDashboardColor(
                         ContextCompat.getColor(
@@ -558,9 +563,18 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         }
     }
 
+    private fun checkReInflationValue(actualValue: Float): Boolean {
+        val standardValue = configInfo.testPressure
+        var limitValue = standardValue * 0.05f
+        if (standardValue * 0.05 < 0.3) {
+            limitValue = 0.3f
+        }
+        return actualValue < standardValue - limitValue
+    }
+
     private fun checkQualifiedValue(actualValue: Float): Boolean {
         val standardValue = configInfo.testPressure
-//        val limitValue = standardValue * 0.05f
+//        var limitValue = standardValue * 0.05f
         var limitValue: Float = standardValue * 0.1f
         if (standardValue * 0.1 < 0.5) {
             limitValue = 0.5f
@@ -604,7 +618,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         if ((value > configInfo.leakageAlarm) && !DEBUG) {
             context?.isFastTimer {
                 if (isTesting) {
-//                    mVb.tvTestStatus.text = getString(R.string.unqualified)
                     setTestStatus(R.string.unqualified)
                     mVb.dpvShowLeakvalue.setDashboardColor(
                         ContextCompat.getColor(
@@ -717,6 +730,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
      */
     private fun startTest() {
         isTesting = true
+        needReInflation = false
         tempCurPa = -1f
         tempCurMaxPa = 0f
         FLAG_COUNTER = 2
@@ -741,7 +755,6 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         mVb.tvPressureValue.setTextColor(ContextCompat.getColor(mContext, R.color.color_27E28E))
 
         tempDataList.clear()
-//        mVb.tvTestStatus.text = getString(R.string.preparing)
         setTestStatus(R.string.preparing)
 
         mVb.tvPrepareTime.text = getString(R.string.prepare_time, "0S")

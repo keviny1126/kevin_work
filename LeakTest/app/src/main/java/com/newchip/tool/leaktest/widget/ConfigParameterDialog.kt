@@ -45,8 +45,8 @@ class ConfigParameterDialog(context: Context) : BaseDialog(context) {
         if (type == InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL) {
             //浮点数,设置小数点后最多5位
             val decimalFilter = InputFilter { source, start, end, dest, dstart, dend ->
-                val input = dest.toString() + source.toString()
-                if (input.matches(Regex("^\\d+(\\.\\d{0,5})?$"))) {
+                val input = dest.toString().substring(0, dstart) + source + dest.toString().substring(dend)
+                if (input.matches(Regex("^\\d*(\\.\\d{0,5})?|\\d*(\\.\\d{0,5})?$"))) {
                     null
                 } else {
                     ""

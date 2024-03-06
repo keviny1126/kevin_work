@@ -2,6 +2,7 @@ package com.newchip.tool.leaktest.base
 
 import com.newchip.tool.leaktest.ui.MainViewModel
 import com.newchip.tool.leaktest.ui.data.DataViewModel
+import com.newchip.tool.leaktest.ui.factory.AgingViewModel
 import com.newchip.tool.leaktest.ui.setting.SettingViewModel
 import com.power.baseproject.ktbase.api.HttpApi
 import com.power.baseproject.ktbase.api.HttpOpApi

@@ -2,6 +2,7 @@ package com.power.baseproject.utils
 
 import android.content.Context
 import android.content.pm.PackageManager
+import com.power.baseproject.utils.log.LogUtil
 import com.power.baseproject.utils.log.LogUtil.d
 import com.power.baseproject.utils.log.LogUtil.e
 import java.io.*
@@ -219,10 +220,11 @@ object CmdControl {
         return result
     }
 
-    fun restartAppCommand() {
+    fun restartAppCommand(context: Context) {
+        val packageName = context.packageName?:"com.newchip.tool.leaktest"
+        LogUtil.i("kevin","当前程序包名:$packageName")
         val cmd = arrayListOf(
-//            "sleep 3",
-            "am start -n com.newchip.tool.leaktest/com.newchip.tool.leaktest.MainActivity"
+            "am start -n $packageName/com.newchip.tool.leaktest.MainActivity"
         )
         execLinuxCommand(cmd)
     }

@@ -204,7 +204,7 @@
             android:layout_marginEnd="@dimen/dp_4"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:maxLines="2"
+            android:maxLines="1"
             android:textSize="@dimen/sp_13"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"

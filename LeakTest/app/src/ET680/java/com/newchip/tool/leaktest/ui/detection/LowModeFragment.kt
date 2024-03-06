@@ -575,7 +575,11 @@ class LowModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
 
     private fun checkQualifiedValue(actualValue: Float): Boolean {
         val standardValue = configInfo.testPressure
-        val limitValue = standardValue * 0.05f
+//        val limitValue = standardValue * 0.05f
+        var limitValue: Float = standardValue * 0.1f
+        if (standardValue * 0.1 < 0.5) {
+            limitValue = 0.5f
+        }
         return actualValue < standardValue - limitValue
     }
 
@@ -674,8 +678,11 @@ class LowModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
 
     private fun getVirtualValue(currentValue: Float, state: String?, valveState: String): Float {
         val standardValue = configInfo.testPressure
-        val limitValue = standardValue * 0.05f
-
+//        val limitValue = standardValue * 0.05f
+        var limitValue: Float = standardValue * 0.1f
+        if (standardValue * 0.1 < 0.5) {
+            limitValue = 0.5f
+        }
         if (state == "02") {
             if (valveState == "01" && currentValue >= standardValue) {
                 return standardValue

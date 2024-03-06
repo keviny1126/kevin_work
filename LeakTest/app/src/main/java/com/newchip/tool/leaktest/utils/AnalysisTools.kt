@@ -114,7 +114,7 @@ object AnalysisTools {
     fun analysisReInflationResult(receiveBuffer: ByteArray?): CmdBackResult<Boolean> {
         val cmdBackResult = CmdBackResult<Boolean>(false)
         receiveBuffer?.let {
-            if (it.size > 1) {
+            if (it.isNotEmpty()) {
                 cmdBackResult.result = true
                 cmdBackResult.data = (it[0].toInt() == 0x01)
             }

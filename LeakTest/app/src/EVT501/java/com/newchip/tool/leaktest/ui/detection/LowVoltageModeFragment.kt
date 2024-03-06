@@ -27,6 +27,7 @@ import com.power.baseproject.utils.Tools.toUnitString
 import com.power.baseproject.utils.log.LogUtil
 import com.power.baseproject.widget.NToast
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -73,6 +74,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
     private var lowStabilizationValueLimit = 0.2f
     private var initLeakValue = "0000"
     private var initPressValue = "00.00"
+    private var needReInflation = false
 
     override fun initView() {
         setTitle(R.string.low_mode)
@@ -322,14 +324,15 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
             val curPa = curPressUnit.convertUnit(averageValue.toFloat(), ConstantsUtils.PA)
             tempPaList.clear()
             actualValue = curPa
+            val valVeState = it.valVeState
             virtualValue =
-                if (DEBUG) curPa else getVirtualValue(curPa, it.currentState, it.valVeState)
+                if (DEBUG) curPa else getVirtualValue(curPa, it.currentState, valVeState)
 
             val curTime = (it.currentTimeCount * TIME_INTERVAL).toFloat() / 1000
             LogUtil.d(
                 "kevin",
                 "实时气压值回调 状态:${it.currentState} ---当前气压:${averageValue}--虚拟气压：${virtualValue}---当前时间:$curTime" +
-                        "------it.currentTimeCount：${it.currentTimeCount} --- 充气状态：${it.valVeState} ==tempCurMaxPa:${tempCurMaxPa}"
+                        "------it.currentTimeCount：${it.currentTimeCount} --- 充气状态：${valVeState} ==tempCurMaxPa:${tempCurMaxPa}"
             )
             when (it.currentState) {
                 "01" -> {
@@ -373,7 +376,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
 
                 "02" -> {
                     //充气状态
-                    leakDataInflateState(curTime, virtualValue)
+                    leakDataInflateState(curTime, virtualValue, valVeState)
                 }
 
                 "03" -> {
@@ -404,6 +407,17 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
                     exhaustValue = actualValue
                 }
                 qualifiedFinish(curTime, exhaustValue)
+            }
+        }
+        vm.reInflationLivedata.observe(this) {
+            LogUtil.i("kevin", "---------补气指令发送结果:$it")
+            if (lifecycle.currentState != Lifecycle.State.RESUMED) {
+                return@observe
+            }
+            launch(Dispatchers.IO) {
+                //收到指令重置标志位，加个延时
+                delay(2000)
+                needReInflation = false
             }
         }
     }
@@ -447,7 +461,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         }
     }
 
-    private fun leakDataInflateState(curTime: Float, curPa: Float) {
+    private fun leakDataInflateState(curTime: Float, curPa: Float, valVeState: String) {
         if (curTime <= readyTime + configInfo.inflationTime) {
             mVb.dpvShowProgress.setPointData(curTime, curPa)
 
@@ -465,8 +479,13 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
                 if (configInfo.inflationTime > 100 && curPa == configInfo.testPressure) 10 else 2
 
             savePointer(curTime, curPa, getString(R.string.inflate))
+            if (!needReInflation && valVeState == "80" && checkReInflationValue(actualValue) && (curTime <= readyTime + configInfo.inflationTime - 3)) {
+                //需要补气
+                LogUtil.e("kevin", "<====================需要补气，发送补气指令=================>")
+                needReInflation = true
+                vm.sendReInflationOrder()
+            }
         }
-
 
         when {
             configInfo.testPressure >= lowPressLimit -> {
@@ -563,9 +582,18 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
         }
     }
 
+    private fun checkReInflationValue(actualValue: Float): Boolean {
+        val standardValue = configInfo.testPressure
+        var limitValue = standardValue * 0.05f
+        if (standardValue * 0.05 < 0.3) {
+            limitValue = 0.3f
+        }
+        return actualValue < standardValue - limitValue
+    }
+
     private fun checkQualifiedValue(actualValue: Float): Boolean {
         val standardValue = configInfo.testPressure
-//        val limitValue = standardValue * 0.05f
+//        var limitValue = standardValue * 0.05f
         var limitValue: Float = standardValue * 0.1f
         if (standardValue * 0.1 < 0.5) {
             limitValue = 0.5f
@@ -721,6 +749,7 @@ class LowVoltageModeFragment : BaseAppFragment<FragmentLeaktestModeBinding>() {
      */
     private fun startTest() {
         isTesting = true
+        needReInflation = false
         tempCurPa = -1f
         tempCurMaxPa = 0f
         FLAG_COUNTER = 2
